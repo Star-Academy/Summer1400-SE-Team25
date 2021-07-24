@@ -15,6 +15,10 @@ public class InvertedIndex {
         documentList = new ArrayList<>();
     }
 
+    public ArrayList<Document> getDocuments(){
+        return documentList;
+    }
+
     public void addWord(String word, Document document) {
         if (!invertedList.containsKey(word))
             invertedList.put(word, new HashSet<>());
