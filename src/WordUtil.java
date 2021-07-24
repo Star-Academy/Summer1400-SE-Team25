@@ -1,7 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class WordUtil {
@@ -16,19 +15,12 @@ public class WordUtil {
     }
 
     private static String removeSymbols(String word) {
-        word = word.replace('+', ' ');
-        word = word.replace('?', ' ');
-        word = word.replace('.', ' ');
-        word = word.replace("-", "");
-        word = word.replace("\"", "");
-        word = word.replace("'", "");
-        word = word.replace(">", "");
-        word = word.replace("<", "");
-        word = word.replace("/", "");
-        word = word.replace(",", "");
-        word = word.replace("|", "");
-        word = word.replace(" ", "");
-        return word;
+        String res = "";
+        for(int i = 0; i < word.length(); i++){
+            if(word.charAt(i) >= 'a' && word.charAt(i) <= 'z')
+                res += word.charAt(i);
+        }
+        return res;
     }
 
     private static boolean isStopWord(String word) {

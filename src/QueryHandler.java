@@ -4,26 +4,33 @@ import java.util.Scanner;
 public class QueryHandler {
     private InvertedIndex invertedIndex;
 
+    public QueryHandler(InvertedIndex invertedIndex) {
+        this.invertedIndex = invertedIndex;
+    }
+
     public HashSet<Document> search(String query) {
         String[] queryList = query.split(" ");
         HashSet<Document> res = new HashSet<>(invertedIndex.getDocuments());
         for (String i : queryList) {
-            if((i.charAt(0) != '+') && (i.charAt(0) != '-')){
+            if ((i.charAt(0) != '+') && (i.charAt(0) != '-')) {
                 String simpleWord = WordUtil.extractRootWord(i);
-                res.retainAll(invertedIndex.getOccurredDocuments(simpleWord));
+                if (simpleWord != null)
+                    res.retainAll(invertedIndex.getOccurredDocuments(simpleWord));
             }
-            
+
         }
-        for(String i : queryList){
-            if(i.charAt(0) == '+'){
+        for (String i : queryList) {
+            if (i.charAt(0) == '+') {
                 String simpleWord = WordUtil.extractRootWord(i);
-                res.addAll(invertedIndex.getOccurredDocuments(simpleWord));
+                if (simpleWord != null)
+                    res.addAll(invertedIndex.getOccurredDocuments(simpleWord));
             }
         }
-        for(String i : queryList){
-            if(i.charAt(0) == '-'){
+        for (String i : queryList) {
+            if (i.charAt(0) == '-') {
                 String simpleWord = WordUtil.extractRootWord(i);
-                res.removeAll(invertedIndex.getOccurredDocuments(simpleWord));
+                if (simpleWord != null)
+                    res.removeAll(invertedIndex.getOccurredDocuments(simpleWord));
             }
         }
         return res;

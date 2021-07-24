@@ -1,5 +1,4 @@
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -9,7 +8,12 @@ public class FileHandler {
 
     public FileHandler(String documentPath) {
         this.dirName = documentPath;
+        invertedIndex = new InvertedIndex();
         init();
+    }
+
+    public InvertedIndex getInvertedIndex() {
+        return this.invertedIndex;
     }
 
     private void init() {
@@ -24,10 +28,10 @@ public class FileHandler {
         try (Scanner fileScanner = new Scanner(file)) {
             while (fileScanner.hasNext()) {
                 String readWord = WordUtil.extractRootWord(fileScanner.next());
-                invertedIndex.addWord(readWord, newDocument);
+                if (readWord != null)
+                    invertedIndex.addWord(readWord, newDocument);
             }
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
