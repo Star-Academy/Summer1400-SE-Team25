@@ -20,13 +20,13 @@ public class FileHandler {
     }
 
     private void extractWords(File file) {
-        invertedIndex.addDocumentToList(file.getName());
-        int fileIndex = invertedIndex.getDocumentIndex(file.getName());
+        Document newDocument = new Document(file.getName(), invertedIndex.getDocumentCount());
+        invertedIndex.incrementDocumentCount();
         try (FileReader fileReader = new FileReader(file)) {
             Scanner fileScanner = new Scanner(fileReader);
             while (fileScanner.hasNext()) {
                 String readWord = extractRootWord(fileScanner.next());
-                invertedIndex.addWord(readWord, fileIndex);
+                invertedIndex.addWord(readWord, newDocument);
             }
         }
         catch (IOException e) {

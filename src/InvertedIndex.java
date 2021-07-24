@@ -7,29 +7,25 @@ import java.util.HashSet;
  * hashmap: word, list[index]
  */
 public class InvertedIndex {
-    private final HashMap<String, HashSet<Integer>> invertedList;
-    private final HashMap<String, Integer> documentList;
+    private final HashMap<String, HashSet<Document>> invertedList;
+    private int documentCount;
 
     public InvertedIndex() {
         invertedList = new HashMap<>();
-        documentList = new HashMap<>();
+        documentCount = 0;
     }
 
-    public void addWord(String word, int documentIndex) {
+    public void addWord(String word, Document document) {
         if (!invertedList.containsKey(word))
             invertedList.put(word, new HashSet<>());
-        invertedList.get(word).add(documentIndex);
+        invertedList.get(word).add(document);
     }
 
-    public int getDocumentIndex(String document) {
-        if (!documentList.containsKey(document))
-            throw new IllegalArgumentException("No such document found!");
-        return documentList.get(document);
+    public void incrementDocumentCount() {
+        documentCount++;
     }
 
-    public void addDocumentToList(String document) {
-        if (documentList.containsKey(document))
-            throw new IllegalArgumentException("Duplicate document key.");
-        documentList.put(document, documentList.size());
+    public int getDocumentCount() {
+        return documentCount;
     }
 }
