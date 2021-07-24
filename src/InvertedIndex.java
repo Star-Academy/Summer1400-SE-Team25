@@ -8,11 +8,11 @@ import java.util.HashSet;
  */
 public class InvertedIndex {
     private final HashMap<String, HashSet<Document>> invertedList;
-    private int documentCount;
+    private final ArrayList<Document> documentList;
 
     public InvertedIndex() {
         invertedList = new HashMap<>();
-        documentCount = 0;
+        documentList = new ArrayList<>();
     }
 
     public void addWord(String word, Document document) {
@@ -21,11 +21,11 @@ public class InvertedIndex {
         invertedList.get(word).add(document);
     }
 
-    public void incrementDocumentCount() {
-        documentCount++;
+    public void addDocument(Document document) {
+        documentList.add(document);
     }
 
     public int getDocumentCount() {
-        return documentCount;
+        return documentList.size();
     }
 }

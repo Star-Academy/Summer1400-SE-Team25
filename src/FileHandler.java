@@ -21,7 +21,7 @@ public class FileHandler {
 
     private void extractWords(File file) {
         Document newDocument = new Document(file.getName(), invertedIndex.getDocumentCount());
-        invertedIndex.incrementDocumentCount();
+        invertedIndex.addDocument(newDocument);
         try (FileReader fileReader = new FileReader(file)) {
             Scanner fileScanner = new Scanner(fileReader);
             while (fileScanner.hasNext()) {
