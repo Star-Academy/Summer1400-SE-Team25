@@ -1,5 +1,4 @@
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
@@ -24,16 +23,12 @@ public class FileHandler {
         invertedIndex.addDocument(newDocument);
         try (Scanner fileScanner = new Scanner(file)) {
             while (fileScanner.hasNext()) {
-                String readWord = extractRootWord(fileScanner.next());
+                String readWord = WordUtil.extractRootWord(fileScanner.next());
                 invertedIndex.addWord(readWord, newDocument);
             }
         }
         catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    private String extractRootWord(String word) {
-        return word;
     }
 }
