@@ -20,7 +20,7 @@ public class FileHandler {
     }
 
     private void extractWords(File file) {
-        invertedIndex.addDocument(file.getName());
+        invertedIndex.addDocumentToList(file.getName());
         int fileIndex = invertedIndex.getDocumentIndex(file.getName());
         try (FileReader fileReader = new FileReader(file)) {
             Scanner fileScanner = new Scanner(fileReader);
