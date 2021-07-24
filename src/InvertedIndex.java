@@ -28,4 +28,8 @@ public class InvertedIndex {
     public int getDocumentCount() {
         return documentList.size();
     }
+
+    public HashSet<Document> getOccurredDocuments(String word) {
+        return invertedList.get(word);
+    }
 }
