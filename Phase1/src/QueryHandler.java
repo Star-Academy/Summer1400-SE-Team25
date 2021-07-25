@@ -1,6 +1,5 @@
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Scanner;
 
@@ -20,7 +19,6 @@ public class QueryHandler {
                 if (simpleWord != null)
                     res.retainAll(invertedIndex.getOccurredDocuments(simpleWord));
             }
-
         }
         for (String i : queryList) {
             if (i.charAt(0) == '+') {
@@ -48,11 +46,11 @@ public class QueryHandler {
             System.out.print("\t" + i.getFileName() + "\n");
             System.out.print("\t\t" + documentPreview(i) + "\n");
         }
+        sc.close();
     }
 
     private String documentPreview(DocumentFile doc) {
         StringBuilder res = new StringBuilder();
-        int counter = 27;
         try (Scanner docSc = new Scanner(new FileReader(doc.getFile()))) {
             String temp = docSc.nextLine();
             res.append(temp.substring(0, Math.min(temp.length(), 27)));
