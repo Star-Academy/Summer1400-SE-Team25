@@ -30,7 +30,7 @@ public class WordUtil {
     }
 
     private static void initStopWords() {
-        try (Scanner fileScanner = new Scanner(new File("src" + File.separatorChar + "StopWords.txt"))) {
+        try (Scanner fileScanner = new Scanner(new File("StopWords.txt"))) {
             while (fileScanner.hasNext())
                 stopWords.add(fileScanner.nextLine());
         }

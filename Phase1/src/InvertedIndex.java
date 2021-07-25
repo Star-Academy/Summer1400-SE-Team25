@@ -2,9 +2,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
+import javax.swing.text.Document;
+
 /**
- * document -> index
- * hashmap: word, list[index]
+ * document -> index hashmap: word, list[index]
  */
 public class InvertedIndex {
     private final HashMap<String, HashSet<Document>> invertedList;
@@ -15,7 +16,7 @@ public class InvertedIndex {
         documentList = new ArrayList<>();
     }
 
-    public ArrayList<Document> getDocuments(){
+    public ArrayList<Document> getDocuments() {
         return documentList;
     }
 
@@ -34,6 +35,10 @@ public class InvertedIndex {
     }
 
     public HashSet<Document> getOccurredDocuments(String word) {
+        if (!invertedList.containsKey(word))
+            throw new IllegalArgumentException(word + "is not on the list.");
+        if (word == null)
+            return null;
         return invertedList.get(word);
     }
 }

@@ -23,7 +23,8 @@ public class FileHandler {
     }
 
     private void extractWords(File file) {
-        Document newDocument = new Document(file.getName(), invertedIndex.getDocumentCount());
+        String docPath = dirName + File.separatorChar + file.getName();
+        Document newDocument = new Document(file.getName(), docPath, invertedIndex.getDocumentCount());
         invertedIndex.addDocument(newDocument);
         try (Scanner fileScanner = new Scanner(file)) {
             while (fileScanner.hasNext()) {
