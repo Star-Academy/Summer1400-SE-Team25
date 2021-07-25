@@ -13,7 +13,7 @@ public class FileHandler {
     }
 
     public InvertedIndex getInvertedIndex() {
-        return this.invertedIndex;
+        return invertedIndex;
     }
 
     private void init() {
