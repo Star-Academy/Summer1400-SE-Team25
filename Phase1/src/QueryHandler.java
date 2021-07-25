@@ -1,5 +1,9 @@
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Scanner;
+
+import javax.swing.text.Document;
 
 public class QueryHandler {
     private InvertedIndex invertedIndex;
@@ -43,6 +47,22 @@ public class QueryHandler {
         System.out.print("Result : \n");
         for (Document i : srchRes) {
             System.out.print("\t" + i.getFileName() + "\n");
+            System.out.print("\t\t" + documentPreview(i) + "\n");
         }
     }
+
+    private String documentPreview(Document doc) {
+        StringBuilder res = new StringBuilder();
+        int counter = 27;
+        try(Scanner docSc = new Scanner(new FileReader(doc.getFileName()))){
+            while(counter >= 0 && docSc.hasNext()){
+                res.append(docSc.next());
+                counter--;
+            }
+            res.append("...");
+        } catch(IOException e){
+            e.printStackTrace();
+        }
+        return res.toString();
+        }
 }
