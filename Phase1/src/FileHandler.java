@@ -18,13 +18,14 @@ public class FileHandler {
 
     private void init() {
         File documentsFolder = new File(dirName);
+        System.out.println(documentsFolder.getAbsolutePath());
         for (File file : documentsFolder.listFiles())
             extractWords(file);
     }
 
     private void extractWords(File file) {
         String docPath = dirName + File.separatorChar + file.getName();
-        Document newDocument = new Document(file.getName(), docPath, invertedIndex.getDocumentCount());
+        DocumentFile newDocument = new DocumentFile(file.getName(), docPath, invertedIndex.getDocumentCount());
         invertedIndex.addDocument(newDocument);
         try (Scanner fileScanner = new Scanner(file)) {
             while (fileScanner.hasNext()) {

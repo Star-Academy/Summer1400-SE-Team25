@@ -1,9 +1,8 @@
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Scanner;
-
-import javax.swing.text.Document;
 
 public class QueryHandler {
     private InvertedIndex invertedIndex;
@@ -12,9 +11,9 @@ public class QueryHandler {
         this.invertedIndex = invertedIndex;
     }
 
-    public HashSet<Document> search(String query) {
+    public HashSet<DocumentFile> search(String query) {
         String[] queryList = query.split(" ");
-        HashSet<Document> res = new HashSet<Document>(invertedIndex.getDocuments());
+        HashSet<DocumentFile> res = new HashSet<>(invertedIndex.getDocuments());
         for (String i : queryList) {
             if ((i.charAt(0) != '+') && (i.charAt(0) != '-')) {
                 String simpleWord = WordUtil.extractRootWord(i);
@@ -43,15 +42,15 @@ public class QueryHandler {
     public void run() {
         Scanner sc = new Scanner(System.in);
         String cmdLine = sc.nextLine();
-        HashSet<Document> srchRes = search(cmdLine);
+        HashSet<DocumentFile> srchRes = search(cmdLine);
         System.out.print("Result : \n");
-        for (Document i : srchRes) {
+        for (DocumentFile i : srchRes) {
             System.out.print("\t" + i.getFileName() + "\n");
             System.out.print("\t\t" + documentPreview(i) + "\n");
         }
     }
 
-    private String documentPreview(Document doc) {
+    private String documentPreview(DocumentFile doc) {
         StringBuilder res = new StringBuilder();
         int counter = 27;
         try (Scanner docSc = new Scanner(new FileReader(doc.getFile()))) {
