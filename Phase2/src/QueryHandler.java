@@ -1,5 +1,3 @@
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.HashSet;
 import java.util.Scanner;
 
@@ -44,20 +42,8 @@ public class QueryHandler {
         System.out.print("Result : \n");
         for (DocumentFile i : srchRes) {
             System.out.print("\t" + i.getFileName() + "\n");
-            System.out.print("\t\t" + documentPreview(i) + "\n");
+            System.out.print("\t\t" + i.previewDocument() + "\n");
         }
         sc.close();
-    }
-
-    private String documentPreview(DocumentFile doc) {
-        StringBuilder res = new StringBuilder();
-        try (Scanner docSc = new Scanner(new FileReader(doc.getFile()))) {
-            String temp = docSc.nextLine();
-            res.append(temp.substring(0, Math.min(temp.length(), 27)));
-            res.append("...");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return res.toString();
     }
 }

@@ -24,6 +24,18 @@ public class DocumentFile {
         return docFile;
     }
 
+    public String previewDocument(){
+        StringBuilder res = new StringBuilder();
+        try (Scanner docSc = new Scanner(new FileReader(docFile))) {
+            String temp = docSc.nextLine();
+            res.append(temp.substring(0, Math.min(temp.length(), 27)));
+            res.append("...");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return res.toString();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
