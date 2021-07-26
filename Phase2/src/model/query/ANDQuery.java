@@ -14,7 +14,8 @@ public class ANDQuery extends Query {
     @Override
     public HashSet<DocumentFile> pushSearchResult(HashSet<DocumentFile> prevSearchResult) {
         String simpleWord = WordUtil.extractRootWord(queryString);
-        prevSearchResult.retainAll(index.getOccurredDocuments(simpleWord));
+        if (simpleWord != null)
+            prevSearchResult.retainAll(index.getOccurredDocuments(simpleWord));
         return prevSearchResult;
     }
 }

@@ -35,10 +35,8 @@ public class InvertedIndex {
     }
 
     public HashSet<DocumentFile> getOccurredDocuments(String word) {
-        if (!invertedList.containsKey(word))
-            throw new IllegalArgumentException(word + "is not on the list.");
-        if (word == null)
-            return null;
+        if (word == null || !invertedList.containsKey(word))
+            return new HashSet<>();
         return invertedList.get(word);
     }
 }

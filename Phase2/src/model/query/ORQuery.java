@@ -14,7 +14,8 @@ public class ORQuery extends Query {
     @Override
     public HashSet<DocumentFile> pushSearchResult(HashSet<DocumentFile> prevSearchResult) {
         String simpleWord = WordUtil.extractRootWord(queryString);
-        prevSearchResult.addAll(index.getOccurredDocuments(simpleWord));
+        if (simpleWord != null)
+            prevSearchResult.addAll(index.getOccurredDocuments(simpleWord));
         return prevSearchResult;
     }
 }

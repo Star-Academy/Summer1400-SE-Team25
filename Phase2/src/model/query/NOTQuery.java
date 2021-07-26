@@ -14,7 +14,8 @@ public class NOTQuery extends Query {
     @Override
     public HashSet<DocumentFile> pushSearchResult(HashSet<DocumentFile> prevSearchResult) {
         String simpleWord = WordUtil.extractRootWord(queryString);
-        prevSearchResult.removeAll(index.getOccurredDocuments(simpleWord));
+        if (simpleWord != null)
+            prevSearchResult.removeAll(index.getOccurredDocuments(simpleWord));
         return prevSearchResult;
     }
 }
