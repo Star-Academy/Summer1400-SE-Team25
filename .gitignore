@@ -518,6 +518,5 @@ modules.xml
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,jetbrains+all,java,csharp
 .idea
-Phase1/EnglishData
-Phase1/src/EnglishData
+*/EnglishData/*
 .DS_Store*
