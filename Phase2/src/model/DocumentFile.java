@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.util.Objects;
 import java.util.Scanner;
 
+import util.Setting;
+
 public class DocumentFile {
     private final File docFile;
     private final String fileName;
