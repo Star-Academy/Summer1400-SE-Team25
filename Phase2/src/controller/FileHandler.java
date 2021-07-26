@@ -1,3 +1,9 @@
+package controller;
+
+import model.DocumentFile;
+import model.InvertedIndex;
+import util.WordUtil;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;

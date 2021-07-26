@@ -1,3 +1,9 @@
+package controller;
+
+import model.DocumentFile;
+import model.InvertedIndex;
+import util.WordUtil;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashSet;
