@@ -8,8 +8,7 @@ import util.WordUtil;
 
 public class NOTQuery extends Query {
     public NOTQuery(String queryString, InvertedIndex index) {
-        this.queryString = queryString;
-        this.index = index;
+        super(index, queryString.substring(1));
     }
 
     @Override

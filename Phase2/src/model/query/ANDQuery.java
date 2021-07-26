@@ -8,8 +8,7 @@ import util.WordUtil;
 
 public class ANDQuery extends Query {
     public ANDQuery(String queryString, InvertedIndex index) {
-        this.queryString = queryString.substring(1);
-        this.index = index;
+        super(index, queryString);
     }
 
     @Override
