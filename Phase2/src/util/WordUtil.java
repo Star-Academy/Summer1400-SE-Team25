@@ -17,12 +17,12 @@ public class WordUtil {
     }
 
     private static String removeSymbols(String word) {
-        String res = "";
-        for(int i = 0; i < word.length(); i++){
-            if(word.charAt(i) >= 'a' && word.charAt(i) <= 'z')
-                res += word.charAt(i);
+        StringBuilder res = new StringBuilder();
+        for (int i = 0; i < word.length(); i++) {
+            if (Character.isAlphabetic(word.charAt(i)))
+                res.append(word.charAt(i));
         }
-        return res;
+        return res.toString();
     }
 
     private static boolean isStopWord(String word) {
@@ -32,7 +32,7 @@ public class WordUtil {
     }
 
     private static void initStopWords() {
-        try (Scanner fileScanner = new Scanner(new File("StopWords.txt"))) {
+        try (Scanner fileScanner = new Scanner(new File(Config.retrieveProperty("STOP_WORDS_PATH")))) {
             while (fileScanner.hasNext())
                 stopWords.add(fileScanner.nextLine());
         }
