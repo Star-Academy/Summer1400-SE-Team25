@@ -1,5 +1,6 @@
 import controller.FileHandler;
 import controller.QueryHandler;
+import util.Config;
 
 public class Main {
     public static void main(String[] args) {
