@@ -1,7 +1,9 @@
-package model;
+package model.query;
 
 import java.util.HashSet;
 
+import model.DocumentFile;
+import model.InvertedIndex;
 import util.WordUtil;
 
 public class ORQuery extends Query {
@@ -11,9 +13,9 @@ public class ORQuery extends Query {
     }
 
     @Override
-    public HashSet<DocumentFile> pushSearchResult(HashSet<DocumentFile> prevSearhcResult) {
+    public HashSet<DocumentFile> pushSearchResult(HashSet<DocumentFile> prevSearchResult) {
         String simpleWord = WordUtil.extractRootWord(queryString);
-        prevSearhcResult.addAll(index.getOccurredDocuments(simpleWord));
-        return prevSearhcResult;
+        prevSearchResult.addAll(index.getOccurredDocuments(simpleWord));
+        return prevSearchResult;
     }
 }
