@@ -1,5 +1,9 @@
 package controller;
 
+import model.DocumentFile;
+import model.InvertedIndex;
+import util.WordUtil;
+
 import java.util.HashSet;
 import java.util.Scanner;
 
