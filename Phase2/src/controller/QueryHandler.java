@@ -1,6 +1,7 @@
 package controller;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 import model.DocumentFile;
 import model.InvertedIndex;
