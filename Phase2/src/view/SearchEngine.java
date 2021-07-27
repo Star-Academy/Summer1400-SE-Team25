@@ -3,6 +3,7 @@ package view;
 import controller.FileHandler;
 import controller.QueryHandler;
 import model.DocumentFile;
+import model.FileMapper;
 import model.InvertedIndex;
 import util.Config;
 
@@ -11,13 +12,14 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class SearchEngine {
-    private final InvertedIndex invertedIndex;
     private final QueryHandler queryHandler;
     private final Scanner inputScanner;
 
     public SearchEngine() {
-        invertedIndex = new InvertedIndex();
-//        FileHandler fileHandler = new FileHandler(Config.retrieveProperty("ENGLISH_DATA_PATH"), invertedIndex);
+        InvertedIndex invertedIndex = new InvertedIndex();
+        FileMapper fileMapper = new FileMapper(invertedIndex);
+        FileHandler fileHandler = new FileHandler(Config.retrieveProperty("ENGLISH_DATA_PATH"), fileMapper);
+        fileHandler.init();
         queryHandler = new QueryHandler(invertedIndex);
         inputScanner = new Scanner(System.in);
     }

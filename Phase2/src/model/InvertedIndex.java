@@ -10,29 +10,19 @@ public class InvertedIndex {
     public InvertedIndex() {
         invertedList = new HashMap<>();
         documentList = new ArrayList<>();
-        init();
-    }
-
-    private void init() {
-
     }
 
     public List<DocumentFile> getDocuments() {
         return documentList;
     }
 
-//    public void addWord(File file, String word) {
-//        if (!invertedList.containsKey(word))
-//            invertedList.put(word, new HashSet<>());
-//        invertedList.get(word).add(document);
-//    }
+    public void addWord(DocumentFile documentFile, String word) {
+        if (!invertedList.containsKey(word))
+            invertedList.put(word, new HashSet<>());
+        invertedList.get(word).add(documentFile);
+    }
 
-//    private DocumentFile getDocumentByName(String documentName) {
-//
-//    }
-
-    public void addDocument(File file) {
-        DocumentFile newDocument = new DocumentFile(file.getName(), file.getAbsolutePath(), documentList.size());
+    public void addDocument(DocumentFile newDocument) {
         documentList.add(newDocument);
     }
 

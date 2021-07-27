@@ -24,10 +24,11 @@ public class FileHandler {
     }
 
     private void extractWords(File file) {
+        fileMapper.addDocument(file);
         try (Scanner fileScanner = new Scanner(file)) {
-            while (fileScanner.hasNextLine()) {
+            while (fileScanner.hasNext()) {
                 String readWord = fileScanner.next();
-//                invertedIndex.addWord(file, readWord);
+                fileMapper.addWordToInvertedIndex(file.getName(), readWord);
             }
         } catch (IOException e) {
             e.printStackTrace();
