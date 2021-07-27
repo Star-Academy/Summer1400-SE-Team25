@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class Config extends Properties {
+    private final static String configFileAddress = "src/Config.properties";
     private static boolean hasInitialize = false;
     final private static Config instance = new Config();
 
@@ -16,7 +17,7 @@ public class Config extends Properties {
 
     private static void initialize() {
         try {
-            FileReader fileReader = new FileReader(Setting.configFileAddress);
+            FileReader fileReader = new FileReader(configFileAddress);
             instance.load(fileReader);
             hasInitialize = true;
         }

@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.Objects;
 import java.util.Scanner;
 
-import util.Setting;
+import util.Config;
 
 public class DocumentFile {
     private final File docFile;
@@ -35,7 +35,7 @@ public class DocumentFile {
         StringBuilder res = new StringBuilder();
         try (Scanner docSc = new Scanner(new FileReader(docFile))) {
             String temp = docSc.nextLine();
-            res.append(temp.substring(0, Math.min(temp.length(), Setting.documentPreviewCharacterCount)));
+            res.append(temp, 0, Math.min(temp.length(), Integer.parseInt(Config.retrieveProperty("DOCUMENT_PREVIEW_CHARACTER_COUNT"))));
             res.append("...");
         } catch (IOException e) {
             e.printStackTrace();
