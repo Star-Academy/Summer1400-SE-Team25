@@ -1,12 +1,11 @@
 package controller;
 
-import model.FileMapper;
-import model.InvertedIndex;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.Scanner;
+
+import model.FileMapper;
 
 public class FileHandler {
     private String directoryName;

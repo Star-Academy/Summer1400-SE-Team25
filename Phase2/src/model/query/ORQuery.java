@@ -1,6 +1,5 @@
 package model.query;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import model.DocumentFile;
