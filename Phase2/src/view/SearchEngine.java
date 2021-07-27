@@ -17,7 +17,7 @@ public class SearchEngine {
 
     public SearchEngine() {
         invertedIndex = new InvertedIndex();
-        FileHandler fileHandler = new FileHandler(Config.retrieveProperty("ENGLISH_DATA_PATH"), invertedIndex);
+//        FileHandler fileHandler = new FileHandler(Config.retrieveProperty("ENGLISH_DATA_PATH"), invertedIndex);
         queryHandler = new QueryHandler(invertedIndex);
         inputScanner = new Scanner(System.in);
     }

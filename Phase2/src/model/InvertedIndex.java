@@ -1,13 +1,8 @@
 package model;
 
-import controller.FileHandler;
-
 import java.io.File;
 import java.util.*;
 
-/**
- * document -> index hashmap: word, list[index]
- */
 public class InvertedIndex {
     private final Map<String, Set<DocumentFile>> invertedList;
     private final List<DocumentFile> documentList;
