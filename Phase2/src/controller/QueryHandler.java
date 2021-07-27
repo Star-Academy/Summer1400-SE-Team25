@@ -4,9 +4,6 @@ import java.util.*;
 
 import model.DocumentFile;
 import model.InvertedIndex;
-import model.query.ANDQuery;
-import model.query.NOTQuery;
-import model.query.ORQuery;
 import model.query.Query;
 
 public class QueryHandler {

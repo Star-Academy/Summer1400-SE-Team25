@@ -27,7 +27,7 @@ public class WordUtil {
     }
 
     private static boolean isStopWord(String word) {
-        if (stopWords.size() == 0)
+        if (stopWords.isEmpty())
             initStopWords();
         return stopWords.contains(word);
     }
