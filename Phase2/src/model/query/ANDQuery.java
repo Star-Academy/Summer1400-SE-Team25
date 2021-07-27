@@ -1,6 +1,7 @@
 package model.query;
 
 import java.util.HashSet;
+import java.util.Set;
 
 import model.DocumentFile;
 import model.InvertedIndex;
@@ -12,7 +13,7 @@ public class ANDQuery extends Query {
     }
 
     @Override
-    public HashSet<DocumentFile> pushSearchResult(HashSet<DocumentFile> prevSearchResult) {
+    public Set<DocumentFile> pushSearchResult(Set<DocumentFile> prevSearchResult) {
         String simpleWord = WordUtil.extractRootWord(queryString);
         if (simpleWord != null)
             prevSearchResult.retainAll(index.getOccurredDocuments(simpleWord));

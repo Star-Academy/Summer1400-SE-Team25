@@ -3,10 +3,11 @@ package util;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class WordUtil {
-    private static ArrayList<String> stopWords = new ArrayList<>();
+    private static List<String> stopWords = new ArrayList<>();
 
     public static String extractRootWord(String word){
         word = word.toLowerCase();

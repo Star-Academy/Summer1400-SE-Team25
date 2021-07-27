@@ -1,40 +1,47 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
+import controller.FileHandler;
+
+import java.io.File;
+import java.util.*;
 
 /**
  * document -> index hashmap: word, list[index]
  */
 public class InvertedIndex {
-    private final HashMap<String, HashSet<DocumentFile>> invertedList;
-    private final ArrayList<DocumentFile> documentList;
+    private final Map<String, Set<DocumentFile>> invertedList;
+    private final List<DocumentFile> documentList;
 
     public InvertedIndex() {
         invertedList = new HashMap<>();
         documentList = new ArrayList<>();
+        init();
     }
 
-    public ArrayList<DocumentFile> getDocuments() {
+    private void init() {
+
+    }
+
+    public List<DocumentFile> getDocuments() {
         return documentList;
     }
 
-    public void addWord(String word, DocumentFile document) {
-        if (!invertedList.containsKey(word))
-            invertedList.put(word, new HashSet<>());
-        invertedList.get(word).add(document);
+//    public void addWord(File file, String word) {
+//        if (!invertedList.containsKey(word))
+//            invertedList.put(word, new HashSet<>());
+//        invertedList.get(word).add(document);
+//    }
+
+//    private DocumentFile getDocumentByName(String documentName) {
+//
+//    }
+
+    public void addDocument(File file) {
+        DocumentFile newDocument = new DocumentFile(file.getName(), file.getAbsolutePath(), documentList.size());
+        documentList.add(newDocument);
     }
 
-    public void addDocument(DocumentFile document) {
-        documentList.add(document);
-    }
-
-    public int getDocumentCount() {
-        return documentList.size();
-    }
-
-    public HashSet<DocumentFile> getOccurredDocuments(String word) {
+    public Set<DocumentFile> getOccurredDocuments(String word) {
         if (word == null || !invertedList.containsKey(word))
             return new HashSet<>();
         return invertedList.get(word);

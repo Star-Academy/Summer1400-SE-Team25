@@ -1,6 +1,6 @@
 package model.query;
 
-import java.util.HashSet;
+import java.util.Set;
 
 import model.DocumentFile;
 import model.InvertedIndex;
@@ -14,7 +14,7 @@ public abstract class Query {
         this.queryString = queryString;
     }
 
-    public abstract HashSet<DocumentFile> pushSearchResult(HashSet<DocumentFile> prevSearchResult);
+    public abstract Set<DocumentFile> pushSearchResult(Set<DocumentFile> prevSearchResult);
 
     public static Query getNewInstance(String queryString, InvertedIndex index){
         if(queryString.charAt(0) == '+')
