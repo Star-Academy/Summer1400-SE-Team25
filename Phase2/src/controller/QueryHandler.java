@@ -18,17 +18,17 @@ public class QueryHandler {
         queriesList = new ArrayList<>();
     }
 
-    public Set<DocumentFile> search(String query) {
-        setQueryList(query);
-        Set<DocumentFile> res = new HashSet<>(invertedIndex.getDocuments());
-        for(Query i : queriesList)
-            res = i.pushSearchResult(res);
-        return res;
+    public Set<DocumentFile> search(String queryLine) {
+        setQueryList(queryLine);
+        Set<DocumentFile> resultSet = new HashSet<>(invertedIndex.getDocuments());
+        for (Query query : queriesList)
+            resultSet = query.pushSearchResult(resultSet);
+        return resultSet;
     }
 
     private void setQueryList(String query) {
         String[] subQueries = query.split("\\s+");
-        for (String i : subQueries)
-            queriesList.add(Query.getNewInstance(i, invertedIndex));
+        for (String subQuery : subQueries)
+            queriesList.add(Query.getNewInstance(subQuery, invertedIndex));
     }
 }
