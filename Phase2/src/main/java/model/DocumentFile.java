@@ -24,20 +24,21 @@ public class DocumentFile {
         return fileName;
     }
 
-    public File getFile() {
-        return docFile;
-    }
-
     public String previewDocument(){
         StringBuilder result = new StringBuilder();
         try (Scanner docSc = new Scanner(new FileReader(docFile))) {
-            String temp = docSc.nextLine();
-            result.append(temp, 0, Math.min(temp.length(), DOCUMENT_PREVIEW_CHARACTER_COUNT));
+            String line = docSc.nextLine();
+            result.append(getLinePreview(line));
             result.append(END_OF_FILE_PREVIEW);
         } catch (IOException e) {
             e.printStackTrace();
         }
         return result.toString();
+    }
+
+    private String getLinePreview(String line) {
+        int characterCount = Math.min(line.length(), DOCUMENT_PREVIEW_CHARACTER_COUNT);
+        return line.substring(0, characterCount);
     }
 
     @Override
