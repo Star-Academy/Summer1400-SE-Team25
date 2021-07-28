@@ -10,7 +10,7 @@ import org.tartarus.snowball.ext.PorterStemmer;
 
 public class WordUtil {
     private static List<String> stopWords = new ArrayList<>();
-    public final static String STOP_WORDS_PATH = "src/main/java/StopWords.txt";
+    private final static String STOP_WORDS_PATH = "src/main/java/StopWords.txt";
 
     public static String extractRootWord(String word){
         PorterStemmer stemmer = new PorterStemmer();
