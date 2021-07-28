@@ -16,7 +16,7 @@ public class FileHandler {
         this.fileMapper = fileMapper;
     }
 
-    public void init() {
+    public void initialize() {
         File documentsFolder = new File(directoryName);
         for (File file : Objects.requireNonNull(documentsFolder.listFiles()))
             extractWords(file);

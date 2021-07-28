@@ -22,10 +22,6 @@ public class DocumentFile {
         return fileName;
     }
 
-    public int getId() {
-        return id;
-    }
-
     public File getFile() {
         return docFile;
     }
@@ -47,7 +43,7 @@ public class DocumentFile {
         if (this == o) return true;
         if (!(o instanceof DocumentFile)) return false;
         DocumentFile document = (DocumentFile) o;
-        return Objects.equals(id, document.id);
+        return id == document.id;
     }
 
     @Override
