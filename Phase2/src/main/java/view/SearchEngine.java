@@ -8,16 +8,16 @@ import controller.QueryHandler;
 import model.DocumentFile;
 import model.FileMapper;
 import model.InvertedIndex;
-import util.Config;
 
 public class SearchEngine {
     private final QueryHandler queryHandler;
     private final Scanner inputScanner;
+    private final static String ENGLISH_DATA_PATH = "src/main/java/EnglishData";
 
     public SearchEngine() {
         InvertedIndex invertedIndex = new InvertedIndex();
         FileMapper fileMapper = new FileMapper(invertedIndex);
-        FileHandler fileHandler = new FileHandler(Config.retrieveProperty("ENGLISH_DATA_PATH"), fileMapper);
+        FileHandler fileHandler = new FileHandler(ENGLISH_DATA_PATH, fileMapper);
         fileHandler.init();
         queryHandler = new QueryHandler(invertedIndex);
         inputScanner = new Scanner(System.in);

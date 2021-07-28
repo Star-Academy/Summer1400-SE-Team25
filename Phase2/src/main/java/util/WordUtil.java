@@ -10,6 +10,7 @@ import org.tartarus.snowball.ext.PorterStemmer;
 
 public class WordUtil {
     private static List<String> stopWords = new ArrayList<>();
+    public final static String STOP_WORDS_PATH = "src/main/java/StopWords.txt";
 
     public static String extractRootWord(String word){
         PorterStemmer stemmer = new PorterStemmer();
@@ -28,7 +29,7 @@ public class WordUtil {
     }
 
     private static void initStopWords() {
-        try (Scanner fileScanner = new Scanner(new File(Config.retrieveProperty("STOP_WORDS_PATH")))) {
+        try (Scanner fileScanner = new Scanner(new File(STOP_WORDS_PATH))) {
             while (fileScanner.hasNext())
                 stopWords.add(fileScanner.nextLine());
         }
