@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class Config extends Properties {
-    private final static String configFileAddress = "src/Config.properties";
+    private final static String configFileAddress = "src/main/java/Config.properties";
     private static boolean hasInitialize = false;
     final private static Config instance = new Config();
 
