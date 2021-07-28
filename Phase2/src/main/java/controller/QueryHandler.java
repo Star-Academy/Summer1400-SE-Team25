@@ -22,7 +22,7 @@ public class QueryHandler {
         setQueryList(line);
         Set<DocumentFile> resultSet = new HashSet<>(invertedIndex.getDocuments());
         for (Operator query : queriesList)
-            resultSet = query.pushSearchResult(resultSet);
+            resultSet = query.operate(resultSet);
         return resultSet;
     }
 

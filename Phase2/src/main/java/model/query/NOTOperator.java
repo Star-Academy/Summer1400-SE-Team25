@@ -12,7 +12,7 @@ public class NOTOperator extends Operator {
     }
 
     @Override
-    public Set<DocumentFile> pushSearchResult(Set<DocumentFile> prevSearchResult) {
+    public Set<DocumentFile> operate(Set<DocumentFile> prevSearchResult) {
         String simpleWord = WordUtil.extractRootWord(queryString);
         if (simpleWord != null)
             prevSearchResult.removeAll(index.getOccurredDocuments(simpleWord));

@@ -1,8 +1,9 @@
 import controller.FileHandler;
 import controller.QueryHandler;
+import controller.SearchEngine;
 import model.FileMapper;
 import model.InvertedIndex;
-import view.SearchEngine;
+import view.UserView;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,6 +13,7 @@ public class Main {
         fileHandler.initialize();
         QueryHandler queryHandler = new QueryHandler(invertedIndex);
         SearchEngine searchEngine = new SearchEngine(queryHandler);
-        searchEngine.start();
+        UserView userView = new UserView(searchEngine);
+        userView.run();
     }
 }

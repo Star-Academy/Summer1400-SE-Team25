@@ -14,7 +14,7 @@ public abstract class Operator {
         this.queryString = queryString;
     }
 
-    public abstract Set<DocumentFile> pushSearchResult(Set<DocumentFile> prevSearchResult);
+    public abstract Set<DocumentFile> operate(Set<DocumentFile> prevSearchResult);
 
     public static Operator getNewInstance(String queryString, InvertedIndex index){
         if(queryString.charAt(0) == '+')
