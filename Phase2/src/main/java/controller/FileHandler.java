@@ -10,6 +10,12 @@ import model.FileMapper;
 public class FileHandler {
     private String directoryName;
     private FileMapper fileMapper;
+    final static String DEFAULT_PATH = "src/main/java/EnglishData";
+
+    public FileHandler(FileMapper fileMapper){
+        this.directoryName = DEFAULT_PATH;
+        this.fileMapper = fileMapper;
+    }
 
     public FileHandler(String documentPath, FileMapper fileMapper) {
         this.directoryName = documentPath;
