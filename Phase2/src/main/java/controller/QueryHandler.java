@@ -7,21 +7,21 @@ import java.util.Set;
 
 import model.DocumentFile;
 import model.InvertedIndex;
-import model.query.Query;
+import model.query.Operator;
 
 public class QueryHandler {
-    private InvertedIndex invertedIndex;
-    private List<Query> queriesList;
+    private final InvertedIndex invertedIndex;
+    private final List<Operator> queriesList;
 
     public QueryHandler(InvertedIndex invertedIndex) {
         this.invertedIndex = invertedIndex;
         queriesList = new ArrayList<>();
     }
 
-    public Set<DocumentFile> search(String queryLine) {
-        setQueryList(queryLine);
+    public Set<DocumentFile> search(String line) {
+        setQueryList(line);
         Set<DocumentFile> resultSet = new HashSet<>(invertedIndex.getDocuments());
-        for (Query query : queriesList)
+        for (Operator query : queriesList)
             resultSet = query.pushSearchResult(resultSet);
         return resultSet;
     }
@@ -29,6 +29,6 @@ public class QueryHandler {
     private void setQueryList(String query) {
         String[] subQueries = query.split("\\s+");
         for (String subQuery : subQueries)
-            queriesList.add(Query.getNewInstance(subQuery, invertedIndex));
+            queriesList.add(Operator.getNewInstance(subQuery, invertedIndex));
     }
 }

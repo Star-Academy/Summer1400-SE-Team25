@@ -6,8 +6,8 @@ import model.DocumentFile;
 import model.InvertedIndex;
 import util.WordUtil;
 
-public class ORQuery extends Query {
-    public ORQuery(String queryString, InvertedIndex index) {
+public class NOTOperator extends Operator {
+    public NOTOperator(String queryString, InvertedIndex index) {
         super(index, queryString.substring(1));
     }
 
@@ -15,7 +15,7 @@ public class ORQuery extends Query {
     public Set<DocumentFile> pushSearchResult(Set<DocumentFile> prevSearchResult) {
         String simpleWord = WordUtil.extractRootWord(queryString);
         if (simpleWord != null)
-            prevSearchResult.addAll(index.getOccurredDocuments(simpleWord));
+            prevSearchResult.removeAll(index.getOccurredDocuments(simpleWord));
         return prevSearchResult;
     }
 }

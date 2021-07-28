@@ -6,16 +6,16 @@ import model.DocumentFile;
 import model.InvertedIndex;
 import util.WordUtil;
 
-public class ANDQuery extends Query {
-    public ANDQuery(String queryString, InvertedIndex index) {
-        super(index, queryString);
+public class OROperator extends Operator {
+    public OROperator(String queryString, InvertedIndex index) {
+        super(index, queryString.substring(1));
     }
 
     @Override
     public Set<DocumentFile> pushSearchResult(Set<DocumentFile> prevSearchResult) {
         String simpleWord = WordUtil.extractRootWord(queryString);
         if (simpleWord != null)
-            prevSearchResult.retainAll(index.getOccurredDocuments(simpleWord));
+            prevSearchResult.addAll(index.getOccurredDocuments(simpleWord));
         return prevSearchResult;
     }
 }
