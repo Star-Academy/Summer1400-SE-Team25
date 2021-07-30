@@ -6,7 +6,7 @@ import controller.SearchEngine;
 
 public class UserView {
     private final SearchEngine searchEngine;
-    private Scanner inputScanner;
+    private final Scanner inputScanner;
     private String currentInputLine;
 
     public UserView(SearchEngine searchEngine){

@@ -6,15 +6,16 @@ import java.util.Objects;
 import java.util.Scanner;
 
 import model.FileMapper;
+import model.InvertedIndex;
 
 public class FileHandler {
     private final String directoryName;
     private final FileMapper fileMapper;
     final static String DEFAULT_PATH = "src/main/java/EnglishData";
 
-    public FileHandler(FileMapper fileMapper){
+    public FileHandler(InvertedIndex invertedIndex){
         this.directoryName = DEFAULT_PATH;
-        this.fileMapper = fileMapper;
+        this.fileMapper = new FileMapper(invertedIndex);
     }
 
     public FileHandler(String documentPath, FileMapper fileMapper) {
