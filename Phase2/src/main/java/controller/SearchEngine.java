@@ -11,15 +11,15 @@ public class SearchEngine {
         this.queryHandler = queryHandler;
     }
 
-    public String search(String searchQuery){
-        StringBuilder resultString = new StringBuilder();
+    public String search(String searchQuery) {
         Set<DocumentFile> resultList = queryHandler.search(searchQuery);
-        for(DocumentFile document : resultList){
-            resultString.append(document.getFileName());
-            resultString.append(":\n\t");
-            resultString.append(document.previewDocument());
-            resultString.append("\n");
-        }
-        return resultString.toString();
+        return docListToString(resultList);
+    }
+
+    public static String docListToString(Set<DocumentFile> docList) {
+        var result = new StringBuilder();
+        for (DocumentFile file : docList)
+            result.append(file.toString());
+        return result.toString();
     }
 }

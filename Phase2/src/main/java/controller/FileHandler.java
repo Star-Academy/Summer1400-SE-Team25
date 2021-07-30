@@ -8,8 +8,8 @@ import java.util.Scanner;
 import model.FileMapper;
 
 public class FileHandler {
-    private String directoryName;
-    private FileMapper fileMapper;
+    private final String directoryName;
+    private final FileMapper fileMapper;
     final static String DEFAULT_PATH = "src/main/java/EnglishData";
 
     public FileHandler(FileMapper fileMapper){

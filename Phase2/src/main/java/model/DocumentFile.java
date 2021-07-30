@@ -24,8 +24,8 @@ public class DocumentFile {
         return fileName;
     }
 
-    public String previewDocument(){
-        StringBuilder result = new StringBuilder();
+    public String previewDocument() {
+        var result = new StringBuilder();
         try (Scanner docSc = new Scanner(new FileReader(docFile))) {
             String line = docSc.nextLine();
             result.append(getLinePreview(line));
@@ -42,9 +42,16 @@ public class DocumentFile {
     }
 
     @Override
+    public String toString() {
+        return fileName + ":\n\t" + previewDocument() + "\n";
+    }
+
+    @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof DocumentFile)) return false;
+        if (this == o)
+            return true;
+        if (!(o instanceof DocumentFile))
+            return false;
         DocumentFile document = (DocumentFile) o;
         return id == document.id;
     }
