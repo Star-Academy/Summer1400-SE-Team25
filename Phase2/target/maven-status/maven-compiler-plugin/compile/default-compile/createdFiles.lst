@@ -1,0 +1,13 @@
+model\query\NOTOperator.class
+model\FileMapper.class
+model\DocumentFile.class
+model\query\OROperator.class
+view\UserView.class
+model\query\ANDOperator.class
+controller\QueryHandler.class
+Main.class
+model\InvertedIndex.class
+controller\SearchEngine.class
+model\query\Operator.class
+controller\FileHandler.class
+util\WordUtil.class
