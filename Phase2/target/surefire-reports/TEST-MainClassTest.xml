@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+<<<<<<< HEAD
 <testsuite tests="1" failures="0" name="MainClassTest" time="0.008" errors="0" skipped="0">
+=======
+<testsuite tests="1" failures="0" name="MainClassTest" time="0" errors="0" skipped="0">
+>>>>>>> de6dad26b96c4242bd6464349fce263270a31da3
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="16.0.2+7-67"/>
@@ -60,5 +64,9 @@
     <property name="sun.stdout.encoding" value="cp437"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
+<<<<<<< HEAD
   <testcase classname="MainClassTest" name="main" time="0.008"/>
+=======
+  <testcase classname="MainClassTest" name="main" time="0"/>
+>>>>>>> de6dad26b96c4242bd6464349fce263270a31da3
 </testsuite>

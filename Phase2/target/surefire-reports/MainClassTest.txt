@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: MainClassTest
 -------------------------------------------------------------------------------
+<<<<<<< HEAD
 Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.08 sec
+=======
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 sec
+>>>>>>> de6dad26b96c4242bd6464349fce263270a31da3
