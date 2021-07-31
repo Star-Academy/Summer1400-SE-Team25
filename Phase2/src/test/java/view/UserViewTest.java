@@ -25,10 +25,10 @@ public class UserViewTest {
     private final InputStream originalIn = System.in;
     private final PrintStream originalOut = System.out;
 
-    UserView view;
+    private UserView view;
 
     @Mock
-    SearchEngine engine;
+    private SearchEngine engine;
 
 
     @Before
@@ -36,7 +36,7 @@ public class UserViewTest {
         System.setIn(inContent);
         System.setOut(new PrintStream(outContent));
 
-        view = new UserView(engine);
+        this.view = new UserView(engine);
 
         when(engine.search("Test")).thenReturn("Doc1");
     }
