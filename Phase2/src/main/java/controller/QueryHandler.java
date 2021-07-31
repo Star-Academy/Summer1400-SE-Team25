@@ -7,7 +7,11 @@ import java.util.Set;
 
 import model.DocumentFile;
 import model.InvertedIndex;
+import model.query.ANDOperator;
+import model.query.NOTOperator;
+import model.query.OROperator;
 import model.query.Operator;
+import util.WordUtil;
 
 public class QueryHandler {
     private final InvertedIndex invertedIndex;
@@ -19,16 +23,25 @@ public class QueryHandler {
     }
 
     public Set<DocumentFile> search(String line) {
+        WordUtil wordUtil = new WordUtil();
         setQueryList(line);
         Set<DocumentFile> resultSet = new HashSet<>(invertedIndex.getDocuments());
         for (Operator query : queriesList)
-            resultSet = query.operate(resultSet);
+            resultSet = query.operate(resultSet, wordUtil);
         return resultSet;
     }
 
     private void setQueryList(String query) {
         String[] subQueries = query.split("\\s+");
         for (String subQuery : subQueries)
-            queriesList.add(Operator.getNewInstance(subQuery, invertedIndex));
+            queriesList.add(getNewInstance(subQuery, invertedIndex));
+    }
+
+    private Operator getNewInstance(String queryString, InvertedIndex index){
+        if(queryString.charAt(0) == '+')
+            return new OROperator(queryString, index);
+        else if(queryString.charAt(0) == '-')
+            return new NOTOperator(queryString, index);
+        return new ANDOperator(queryString, index);
     }
 }

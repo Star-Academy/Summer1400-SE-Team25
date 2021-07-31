@@ -9,10 +9,15 @@ import java.util.Scanner;
 import org.tartarus.snowball.ext.PorterStemmer;
 
 public class WordUtil {
-    private final static List<String> stopWords = new ArrayList<>();
+    private static List<String> stopWords;
     private final static String STOP_WORDS_PATH = "src/main/java/StopWords.txt";
 
-    public static String extractRootWord(String word){
+    public WordUtil() {
+        stopWords = new ArrayList<>();
+        initStopWords();
+    }
+
+    public String extractRootWord(String word){
         PorterStemmer stemmer = new PorterStemmer();
         stemmer.setCurrent(word);
         stemmer.stem();
@@ -22,13 +27,11 @@ public class WordUtil {
         return word;
     }
 
-    private static boolean isStopWord(String word) {
-        if (stopWords.size() == 0)
-            initStopWords();
+    private boolean isStopWord(String word) {
         return stopWords.contains(word);
     }
 
-    private static void initStopWords() {
+    private void initStopWords() {
         try (Scanner fileScanner = new Scanner(new File(STOP_WORDS_PATH))) {
             while (fileScanner.hasNext())
                 stopWords.add(fileScanner.nextLine());
