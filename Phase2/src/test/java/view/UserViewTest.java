@@ -24,15 +24,19 @@ public class UserViewTest {
 
     private final InputStream originalIn = System.in;
     private final PrintStream originalOut = System.out;
+
+    UserView view;
+
     @Mock
     SearchEngine engine;
 
-    UserView view = new UserView(engine);
 
     @Before
     public void setUp() {
         System.setIn(inContent);
         System.setOut(new PrintStream(outContent));
+
+        view = new UserView(engine);
 
         when(engine.search("Test")).thenReturn("Doc1");
     }
@@ -41,7 +45,7 @@ public class UserViewTest {
     public void TestRun() {
         view.run();
         String result = outContent.toString();
-        assertEquals("Enter search query:\nDoc1", result);
+        assertEquals("Enter search query:\r\nDoc1", result);
     }
 
     @After
