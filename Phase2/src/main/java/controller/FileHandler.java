@@ -9,21 +9,13 @@ import model.FileMapper;
 import model.InvertedIndex;
 
 public class FileHandler {
-    private final String directoryName;
     private final FileMapper fileMapper;
-    final static String DEFAULT_PATH = "src/main/java/EnglishData";
 
     public FileHandler(InvertedIndex invertedIndex){
-        this.directoryName = DEFAULT_PATH;
         this.fileMapper = new FileMapper(invertedIndex);
     }
 
-    public FileHandler(String documentPath, FileMapper fileMapper) {
-        this.directoryName = documentPath;
-        this.fileMapper = fileMapper;
-    }
-
-    public void initialize() {
+    public void initialize(String directoryName) {
         File documentsFolder = new File(directoryName);
         for (File file : Objects.requireNonNull(documentsFolder.listFiles()))
             extractWords(file);
