@@ -11,10 +11,13 @@ import java.io.PrintStream;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import controller.SearchEngine;
 
+@RunWith(MockitoJUnitRunner.class)
 public class UserViewTest {
     private final ByteArrayInputStream inContent = new ByteArrayInputStream("Test".getBytes());
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();

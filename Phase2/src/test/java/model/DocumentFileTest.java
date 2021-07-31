@@ -1,11 +1,10 @@
 package model;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+
 import org.junit.Before;
 import org.junit.Test;
-
-import java.io.FileNotFoundException;
-
-import static org.junit.Assert.*;
 
 public class DocumentFileTest {
     private final String FIRST_DOCUMENT_NAME = "Test Document 1";
