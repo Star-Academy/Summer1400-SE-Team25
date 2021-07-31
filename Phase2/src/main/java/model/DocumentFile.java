@@ -20,10 +20,6 @@ public class DocumentFile {
         this.docFile = new File(path);
     }
 
-    public String getFileName() {
-        return fileName;
-    }
-
     public String previewDocument() {
         var result = new StringBuilder();
         try (Scanner docSc = new Scanner(new FileReader(docFile))) {
@@ -31,7 +27,7 @@ public class DocumentFile {
             result.append(getLinePreview(line));
             result.append(END_OF_FILE_PREVIEW);
         } catch (IOException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
         return result.toString();
     }
