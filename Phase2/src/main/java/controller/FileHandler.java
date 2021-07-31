@@ -6,13 +6,12 @@ import java.util.Objects;
 import java.util.Scanner;
 
 import model.FileMapper;
-import model.InvertedIndex;
 
 public class FileHandler {
     private final FileMapper fileMapper;
 
-    public FileHandler(InvertedIndex invertedIndex){
-        this.fileMapper = new FileMapper(invertedIndex);
+    public FileHandler(FileMapper mapper){
+        this.fileMapper = mapper;
     }
 
     public void initialize(String directoryName) {
