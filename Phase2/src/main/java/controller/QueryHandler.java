@@ -11,6 +11,7 @@ import model.query.ANDOperator;
 import model.query.NOTOperator;
 import model.query.OROperator;
 import model.query.Operator;
+import util.WordUtil;
 
 public class QueryHandler {
     private final InvertedIndex invertedIndex;
@@ -22,10 +23,11 @@ public class QueryHandler {
     }
 
     public Set<DocumentFile> search(String line) {
+        WordUtil wordUtil = new WordUtil();
         setQueryList(line);
         Set<DocumentFile> resultSet = new HashSet<>(invertedIndex.getDocuments());
         for (Operator query : queriesList)
-            resultSet = query.operate(resultSet);
+            resultSet = query.operate(resultSet, wordUtil);
         return resultSet;
     }
 

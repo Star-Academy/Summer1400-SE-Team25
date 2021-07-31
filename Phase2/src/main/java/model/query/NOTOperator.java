@@ -16,8 +16,8 @@ public class NOTOperator implements Operator {
     }
 
     @Override
-    public Set<DocumentFile> operate(Set<DocumentFile> prevSearchResult) {
-        String simpleWord = WordUtil.extractRootWord(queryString);
+    public Set<DocumentFile> operate(Set<DocumentFile> prevSearchResult, WordUtil wordUtil) {
+        String simpleWord = wordUtil.extractRootWord(queryString);
         if (simpleWord != null)
             prevSearchResult.removeAll(index.getOccurredDocuments(simpleWord));
         return prevSearchResult;
