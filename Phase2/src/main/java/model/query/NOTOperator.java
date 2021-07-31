@@ -6,9 +6,13 @@ import model.DocumentFile;
 import model.InvertedIndex;
 import util.WordUtil;
 
-public class NOTOperator extends Operator {
+public class NOTOperator implements Operator {
+    private String queryString;
+    private InvertedIndex index;
+
     public NOTOperator(String queryString, InvertedIndex index) {
-        super(index, queryString.substring(1));
+        this.queryString = queryString.substring(1);
+        this.index = index;
     }
 
     @Override

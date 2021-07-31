@@ -6,9 +6,13 @@ import model.DocumentFile;
 import model.InvertedIndex;
 import util.WordUtil;
 
-public class ANDOperator extends Operator {
+public class ANDOperator implements Operator {
+    private String queryString;
+    private InvertedIndex index;
+
     public ANDOperator(String queryString, InvertedIndex index) {
-        super(index, queryString);
+        this.queryString = queryString;
+        this.index = index;
     }
 
     @Override

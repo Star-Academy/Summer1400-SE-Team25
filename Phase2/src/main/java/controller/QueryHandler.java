@@ -7,6 +7,9 @@ import java.util.Set;
 
 import model.DocumentFile;
 import model.InvertedIndex;
+import model.query.ANDOperator;
+import model.query.NOTOperator;
+import model.query.OROperator;
 import model.query.Operator;
 
 public class QueryHandler {
@@ -29,6 +32,14 @@ public class QueryHandler {
     private void setQueryList(String query) {
         String[] subQueries = query.split("\\s+");
         for (String subQuery : subQueries)
-            queriesList.add(Operator.getNewInstance(subQuery, invertedIndex));
+            queriesList.add(getNewInstance(subQuery, invertedIndex));
+    }
+
+    private Operator getNewInstance(String queryString, InvertedIndex index){
+        if(queryString.charAt(0) == '+')
+            return new OROperator(queryString, index);
+        else if(queryString.charAt(0) == '-')
+            return new NOTOperator(queryString, index);
+        return new ANDOperator(queryString, index);
     }
 }

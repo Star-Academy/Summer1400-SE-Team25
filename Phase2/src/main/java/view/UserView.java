@@ -20,7 +20,7 @@ public class UserView {
     }
 
     private void getInput() {
-        System.out.println("Enter search query:\n");
+        System.out.println("Enter search query:");
         currentInputLine = inputScanner.nextLine();
     }
 
