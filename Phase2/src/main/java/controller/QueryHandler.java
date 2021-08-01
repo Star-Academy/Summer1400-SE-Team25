@@ -24,8 +24,7 @@ public class QueryHandler {
         queriesList = new ArrayList<>();
     }
 
-    public Set<DocumentFile> search(String line) {
-        WordUtil wordUtil = new WordUtil();
+    public Set<DocumentFile> search(String line, WordUtil wordUtil) {
         setQueryList(line);
         Set<DocumentFile> resultSet = new HashSet<>(invertedIndex.getDocuments());
         for (Operator query : queriesList)
