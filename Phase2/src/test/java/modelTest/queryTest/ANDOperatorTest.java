@@ -40,22 +40,34 @@ public class ANDOperatorTest {
 
     private void initializePreviewResult() {
         previewSearchResult = new HashSet<>();
-        previewSearchResult.add(additionalDocumentFile);
         andOperator = new ANDOperator(QUERY_STRING, invertedIndex);
     }
 
     @Test
-    public void testOperate() {
+    public void testOperateBothAddition() {
+        initializePreviewResult();
+        previewSearchResult.add(documentFile);
+        previewSearchResult.add(additionalDocumentFile);
+        var result = andOperator.operate(previewSearchResult, wordUtil);
+        assertTrue(result.contains(documentFile));
+        assertFalse(result.contains(additionalDocumentFile));
+    }
+
+    @Test
+    public void testFirstAddition() {
         initializePreviewResult();
         previewSearchResult.add(documentFile);
         var result = andOperator.operate(previewSearchResult, wordUtil);
         assertTrue(result.contains(documentFile));
+        assertFalse(result.contains(additionalDocumentFile));
     }
 
     @Test
-    public void testNullOperate() {
+    public void testSecondAddition() {
         initializePreviewResult();
+        previewSearchResult.add(additionalDocumentFile);
         var result = andOperator.operate(previewSearchResult, wordUtil);
-        assertTrue(result.isEmpty());
+        assertFalse(result.contains(documentFile));
+        assertFalse(result.contains(additionalDocumentFile));
     }
 }

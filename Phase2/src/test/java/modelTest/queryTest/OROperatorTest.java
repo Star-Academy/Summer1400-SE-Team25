@@ -2,7 +2,7 @@ package modelTest.queryTest;
 
 import model.DocumentFile;
 import model.InvertedIndex;
-import model.query.NOTOperator;
+import model.query.OROperator;
 import model.query.Operator;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,15 +15,16 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class NOTOperatorTest {
+public class OROperatorTest {
     private final String QUERY_STRING = "friend";
     private Set<DocumentFile> previewSearchResult;
-    private Operator notOperator;
+    private Operator orOperator;
     @Mock
     private InvertedIndex invertedIndex;
     @Mock
@@ -41,33 +42,34 @@ public class NOTOperatorTest {
 
     private void initializePreviewResult() {
         previewSearchResult = new HashSet<>();
-        notOperator = new NOTOperator(QUERY_STRING, invertedIndex);
+        orOperator = new OROperator(QUERY_STRING, invertedIndex);
     }
 
     @Test
-    public void testOperateDeletion() {
+    public void testOperateBothAddition() {
         initializePreviewResult();
         previewSearchResult.add(documentFile);
         previewSearchResult.add(additionalDocumentFile);
-        var result = notOperator.operate(previewSearchResult, wordUtil);
-        assertFalse(result.contains(documentFile));
+        var result = orOperator.operate(previewSearchResult, wordUtil);
+        assertTrue(result.contains(documentFile));
         assertTrue(result.contains(additionalDocumentFile));
     }
 
     @Test
-    public void testOperateIgnoring() {
+    public void testOperateUnion() {
         initializePreviewResult();
         previewSearchResult.add(additionalDocumentFile);
-        var result = notOperator.operate(previewSearchResult, wordUtil);
-        assertFalse(result.contains(documentFile));
+        var result = orOperator.operate(previewSearchResult, wordUtil);
+        assertTrue(result.contains(documentFile));
         assertTrue(result.contains(additionalDocumentFile));
     }
 
     @Test
-    public void testNullOperate() {
+    public void testOneAddition() {
         initializePreviewResult();
         previewSearchResult.add(documentFile);
-        var result = notOperator.operate(previewSearchResult, wordUtil);
-        assertTrue(result.isEmpty());
+        var result = orOperator.operate(previewSearchResult, wordUtil);
+        assertTrue(result.contains(documentFile));
+        assertFalse(result.contains(additionalDocumentFile));
     }
 }
