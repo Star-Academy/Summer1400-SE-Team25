@@ -16,6 +16,8 @@ import util.WordUtil;
 public class QueryHandler {
     private final InvertedIndex invertedIndex;
     private final List<Operator> queriesList;
+    private final char orSymbol = '+';
+    private final char notSymbol = '-';
 
     public QueryHandler(InvertedIndex invertedIndex) {
         this.invertedIndex = invertedIndex;
@@ -38,9 +40,9 @@ public class QueryHandler {
     }
 
     private Operator getNewInstance(String queryString, InvertedIndex index){
-        if(queryString.charAt(0) == '+')
+        if(queryString.charAt(0) == orSymbol)
             return new OROperator(queryString, index);
-        else if(queryString.charAt(0) == '-')
+        else if(queryString.charAt(0) == notSymbol)
             return new NOTOperator(queryString, index);
         return new ANDOperator(queryString, index);
     }
