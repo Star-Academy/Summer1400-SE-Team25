@@ -10,6 +10,8 @@ import org.mockito.junit.MockitoJUnitRunner;
 @RunWith(MockitoJUnitRunner.class)
 public class FIleHandlerTest {
     private FileHandler fileHandler;
+    private final String INVALID_PATH = "invalid/path";
+    private final String VALID_PATH = "src/main/java/EnglishData";
 
     @Mock
     private FileMapper fileMapper;
@@ -20,7 +22,12 @@ public class FIleHandlerTest {
     }
 
     @Test(expected = NullPointerException.class)
-    public void initializeTest() {
-        fileHandler.initialize("A dir name that doesn't exist");
+    public void testInitializeMethodException() {
+        fileHandler.initialize(INVALID_PATH);
+    }
+
+    @Test
+    public void testInitializeMethod() {
+        fileHandler.initialize(VALID_PATH);
     }
 }

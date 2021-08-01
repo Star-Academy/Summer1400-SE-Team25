@@ -21,9 +21,13 @@ public class QueryHandlerTest {
 
     @Mock
     private InvertedIndex index;
+    @Mock
     private DocumentFile document1;
+    @Mock
     private DocumentFile document2;
+    @Mock
     private DocumentFile document3;
+    @Mock
     private DocumentFile document4;
 
     @Before
@@ -48,16 +52,16 @@ public class QueryHandlerTest {
             }
         };
 
-        when(index.getOccurredDocuments("Test query1")).thenReturn(searchResult1);
-        when(index.getOccurredDocuments("Test query2")).thenReturn(searchResult2);
-        when(index.getOccurredDocuments("Test query3")).thenReturn(searchResult3);
+        when(index.getOccurredDocuments("Test_query1")).thenReturn(searchResult1);
+        when(index.getOccurredDocuments("Test_query2")).thenReturn(searchResult2);
+        when(index.getOccurredDocuments("Test_query3")).thenReturn(searchResult3);
 
         this.queryHandler = new QueryHandler(index);
     }
 
     @Test
     public void searchTest() {
-        String searchQuery = "Test query1 +Test query2 -Test query3";
+        String searchQuery = "Test_query1 +Test_query2 -Test_query3";
 
         var searchResult = queryHandler.search(searchQuery);
         var expectedResult = new HashSet<DocumentFile>(){
