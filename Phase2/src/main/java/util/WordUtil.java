@@ -4,9 +4,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
-//import org.tartarus.snowball.ext.PorterStemmer;
+import org.tartarus.snowball.ext.PorterStemmer;
 
 public class WordUtil {
     private static List<String> stopWords;
@@ -18,10 +19,11 @@ public class WordUtil {
     }
 
     public String extractRootWord(String word){
-//        PorterStemmer stemmer = new PorterStemmer();
-//        stemmer.setCurrent(word);
-//        stemmer.stem();
-//        word = stemmer.getCurrent();
+        word = word.toLowerCase();
+        PorterStemmer stemmer = new PorterStemmer();
+        stemmer.setCurrent(word);
+        stemmer.stem();
+        word = stemmer.getCurrent();
         if (isStopWord(word))
             return null;
         return word;
