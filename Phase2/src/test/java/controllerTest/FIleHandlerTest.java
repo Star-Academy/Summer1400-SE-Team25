@@ -1,15 +1,14 @@
-package controller;
+package controllerTest;
 
-import org.junit.Before;
-import org.junit.Test;
+import controller.FileHandler;
+import model.FileMapper;
+import org.junit.*;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import model.FileMapper;
-
 @RunWith(MockitoJUnitRunner.class)
-public class FileHandlerTest {
+public class FIleHandlerTest {
     private FileHandler fileHandler;
 
     @Mock

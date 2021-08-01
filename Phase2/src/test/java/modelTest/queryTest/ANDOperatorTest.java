@@ -1,4 +1,4 @@
-package controller.queryTest;
+package modelTest.queryTest;
 
 import static org.junit.Assert.*;
 

@@ -1,17 +1,21 @@
-package controller;
+package controllerTest;
 
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
 import java.util.HashSet;
 
+import controller.QueryHandler;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 
 import model.DocumentFile;
 import model.InvertedIndex;
+import org.mockito.junit.MockitoJUnitRunner;
 
+@RunWith(MockitoJUnitRunner.class)
 public class QueryHandlerTest {
     private QueryHandler queryHandler;
 
@@ -64,5 +68,4 @@ public class QueryHandlerTest {
         };
         assertTrue(searchResult.equals(expectedResult));
     }
-
 }

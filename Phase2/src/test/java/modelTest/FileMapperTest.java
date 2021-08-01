@@ -1,5 +1,8 @@
-package model;
+package modelTest;
 
+import model.DocumentFile;
+import model.FileMapper;
+import model.InvertedIndex;
 import org.junit.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;

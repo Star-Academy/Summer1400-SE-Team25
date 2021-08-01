@@ -1,16 +1,21 @@
-package controller;
+package controllerTest;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 
 import java.util.HashSet;
 
+import controller.QueryHandler;
+import controller.SearchEngine;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 
 import model.DocumentFile;
+import org.mockito.junit.MockitoJUnitRunner;
 
+@RunWith(MockitoJUnitRunner.class)
 public class SearchEngineTest {
     private SearchEngine engine;
     private final String searchQuery = "Test query";
