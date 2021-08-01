@@ -60,9 +60,9 @@ public class QueryHandlerTest {
             }
         };
 
-        when(index.getOccurredDocuments("Test_query1")).thenReturn(searchResult1);
-        when(index.getOccurredDocuments("Test_query2")).thenReturn(searchResult2);
-        when(index.getOccurredDocuments("Test_query3")).thenReturn(searchResult3);
+        when(index.getOccurredDocuments("test_query1")).thenReturn(searchResult1);
+        when(index.getOccurredDocuments("test_query2")).thenReturn(searchResult2);
+        when(index.getOccurredDocuments("test_query3")).thenReturn(searchResult3);
         when(index.getDocuments()).thenReturn(documentsSet);
 
         this.queryHandler = new QueryHandler(index);

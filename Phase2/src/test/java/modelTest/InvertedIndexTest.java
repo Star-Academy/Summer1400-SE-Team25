@@ -32,8 +32,7 @@ public class InvertedIndexTest {
     public void testAddDocument() {
         initializeInvertedIndex();
         invertedIndex.addDocument(documentFile);
-        DocumentFile newDocumentFile = invertedIndex.getDocuments().get(0);
-        assertEquals(documentFile, newDocumentFile);
+        assertTrue(invertedIndex.getDocuments().contains(documentFile));
     }
 
     @Test
