@@ -40,7 +40,6 @@ public class ANDOperatorTest {
 
     private void initializePreviewResult() {
         previewSearchResult = new HashSet<>();
-        previewSearchResult.add(documentFile);
         previewSearchResult.add(additionalDocumentFile);
         andOperator = new ANDOperator(QUERY_STRING, invertedIndex);
     }
@@ -48,7 +47,15 @@ public class ANDOperatorTest {
     @Test
     public void testOperate() {
         initializePreviewResult();
+        previewSearchResult.add(documentFile);
         var result = andOperator.operate(previewSearchResult, wordUtil);
         assertTrue(result.contains(documentFile));
+    }
+
+    @Test
+    public void testNullOperate() {
+        initializePreviewResult();
+        var result = andOperator.operate(previewSearchResult, wordUtil);
+        assertTrue(result.isEmpty());
     }
 }
