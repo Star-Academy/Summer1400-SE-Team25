@@ -22,6 +22,7 @@ public class SearchEngineTest {
 
     @Mock
     private QueryHandler queryHandler;
+    @Mock
     private DocumentFile documentFile;
 
     @Before
