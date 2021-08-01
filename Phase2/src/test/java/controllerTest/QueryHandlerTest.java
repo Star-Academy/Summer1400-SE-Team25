@@ -5,15 +5,15 @@ import static org.mockito.Mockito.when;
 
 import java.util.HashSet;
 
-import controller.QueryHandler;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 
+import controller.QueryHandler;
 import model.DocumentFile;
 import model.InvertedIndex;
-import org.mockito.junit.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
 public class QueryHandlerTest {
@@ -56,7 +56,7 @@ public class QueryHandlerTest {
     }
 
     @Test
-    public void serachTest() {
+    public void searchTest() {
         String searchQuery = "Test query1 +Test query2 -Test query3";
 
         var searchResult = queryHandler.search(searchQuery);
