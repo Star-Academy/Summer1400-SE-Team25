@@ -45,7 +45,7 @@ public class UserViewTest {
     public void TestRun() {
         view.run();
         String result = outContent.toString();
-        assertEquals("Enter search query:\r\nDoc1", result);
+        assertEquals("Enter search query:\nDoc1", result);
     }
 
     @After
