@@ -536,6 +536,6 @@ EnglishData
 .DS_Store
 .vscode
 lib
-.settings
 .classpath
+.settings
 .project

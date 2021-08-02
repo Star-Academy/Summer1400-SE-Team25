@@ -3,6 +3,7 @@ package controller;
 import java.util.Set;
 
 import model.DocumentFile;
+import util.WordUtil;
 
 public class SearchEngine {
     private final QueryHandler queryHandler;
@@ -12,7 +13,7 @@ public class SearchEngine {
     }
 
     public String search(String searchQuery) {
-        Set<DocumentFile> resultList = queryHandler.search(searchQuery);
+        Set<DocumentFile> resultList = queryHandler.search(searchQuery, new WordUtil());
         return docListToString(resultList);
     }
 

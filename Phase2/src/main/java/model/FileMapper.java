@@ -24,7 +24,7 @@ public class FileMapper {
     public void addDocument(File file) {
         if (documentFiles.containsKey(file.getName()))
             return;
-        DocumentFile newDocument = new DocumentFile(file.getName(), file.getAbsolutePath(), documentFiles.size());
+        var newDocument = new DocumentFile(file.getName(), file.getAbsolutePath(), documentFiles.size());
         documentFiles.put(file.getName(), newDocument);
         invertedIndex.addDocument(newDocument);
     }

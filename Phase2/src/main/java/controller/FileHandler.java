@@ -15,7 +15,7 @@ public class FileHandler {
     }
 
     public void initialize(String directoryName) {
-        File documentsFolder = new File(directoryName);
+        var documentsFolder = new File(directoryName);
         for (File file : Objects.requireNonNull(documentsFolder.listFiles()))
             extractWords(file);
     }

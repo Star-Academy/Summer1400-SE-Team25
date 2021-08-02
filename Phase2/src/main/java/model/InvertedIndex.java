@@ -14,7 +14,7 @@ public class InvertedIndex {
         documentList = new HashSet<>();
     }
 
-    public HashSet<DocumentFile> getDocuments() {
+    public Set<DocumentFile> getDocuments() {
         return documentList;
     }
 

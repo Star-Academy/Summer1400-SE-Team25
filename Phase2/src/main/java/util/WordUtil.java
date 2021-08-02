@@ -19,7 +19,7 @@ public class WordUtil {
 
     public String extractRootWord(String word){
         word = word.toLowerCase();
-        PorterStemmer stemmer = new PorterStemmer();
+        var stemmer = new PorterStemmer();
         stemmer.setCurrent(word);
         stemmer.stem();
         word = stemmer.getCurrent();
@@ -33,7 +33,7 @@ public class WordUtil {
     }
 
     private void initStopWords() {
-        try (Scanner fileScanner = new Scanner(new File(STOP_WORDS_PATH))) {
+        try (var fileScanner = new Scanner(new File(STOP_WORDS_PATH))) {
             while (fileScanner.hasNext())
                 stopWords.add(fileScanner.nextLine());
         }
