@@ -17,9 +17,9 @@ public class SearchEngine {
         return docListToString(resultList);
     }
 
-    public static String docListToString(Set<DocumentFile> docList) {
+    private String docListToString(Set<DocumentFile> documentList) {
         var result = new StringBuilder();
-        for (DocumentFile file : docList)
+        for (DocumentFile file : documentList)
             result.append(file.toString());
         return result.toString();
     }

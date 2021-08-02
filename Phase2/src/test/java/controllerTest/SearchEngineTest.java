@@ -1,6 +1,7 @@
 package controllerTest;
 
 import static org.junit.Assert.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 import java.util.HashSet;
@@ -14,6 +15,7 @@ import org.mockito.Mock;
 
 import model.DocumentFile;
 import org.mockito.junit.MockitoJUnitRunner;
+import util.WordUtil;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SearchEngineTest {
@@ -33,9 +35,8 @@ public class SearchEngineTest {
             }
         };
 
-        when(queryHandler.search(searchQuery)).thenReturn(mockedSearchResult);
+        when(queryHandler.search(any(String.class), any(WordUtil.class))).thenReturn(mockedSearchResult);
         when(documentFile.toString()).thenReturn("Doc1");
-
         engine = new SearchEngine(queryHandler);
     }
 
