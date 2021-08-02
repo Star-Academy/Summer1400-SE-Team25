@@ -18,12 +18,6 @@ public class InvertedIndexTest {
     @Mock
     private DocumentFile documentFile;
 
-    @Before
-    public void initialize() {
-//        when(documentFile.equals(any(Object.class))).thenReturn(true); TODO ask whether if this two lines are necessary or not
-//        when(documentFile.hashCode()).thenReturn(WORD.hashCode());
-    }
-
     private void initializeInvertedIndex() {
         invertedIndex = new InvertedIndex();
     }

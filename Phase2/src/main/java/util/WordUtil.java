@@ -9,11 +9,17 @@ import java.util.Scanner;
 import org.tartarus.snowball.ext.PorterStemmer;
 
 public class WordUtil {
-    private static List<String> stopWords;
-    private final static String STOP_WORDS_PATH = "src/main/java/StopWords.txt";
+    private List<String> stopWords;
+    private final String STOP_WORDS_PATH;
 
     public WordUtil() {
         stopWords = new ArrayList<>();
+        STOP_WORDS_PATH = "src/main/java/StopWords.txt";
+        initStopWords();
+    }
+
+    public WordUtil(String STOP_WORDS_PATH) {
+        this.STOP_WORDS_PATH = STOP_WORDS_PATH;
         initStopWords();
     }
 
@@ -38,7 +44,7 @@ public class WordUtil {
                 stopWords.add(fileScanner.nextLine());
         }
         catch (FileNotFoundException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
     }
 }

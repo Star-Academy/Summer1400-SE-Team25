@@ -28,7 +28,7 @@ public class FileHandler {
                 fileMapper.addWordToInvertedIndex(file.getName(), readWord);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
     }
 }
