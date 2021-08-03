@@ -13,7 +13,7 @@ namespace SearchEngine.Model
 
         public string GetDocumentName()
         {
-            throw new System.NotImplementedException();
+            return Path.GetFileName(_documentPath);
         }
     }
 }
