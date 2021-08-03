@@ -16,10 +16,10 @@ public class ANDOperator implements Operator {
     }
 
     @Override
-    public Set<DocumentFile> operate(Set<DocumentFile> prevSearchResult, WordUtil wordUtil) {
+    public Set<DocumentFile> operate(Set<DocumentFile> previewSearchResult, WordUtil wordUtil) {
         String simpleWord = wordUtil.extractRootWord(queryString);
         if (simpleWord != null)
-            prevSearchResult.retainAll(index.getOccurredDocuments(simpleWord));
-        return prevSearchResult;
+            previewSearchResult.retainAll(index.getOccurredDocuments(simpleWord));
+        return previewSearchResult;
     }
 }

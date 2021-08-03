@@ -6,20 +6,20 @@ import model.DocumentFile;
 import model.InvertedIndex;
 import util.WordUtil;
 
-public class OROperator implements Operator {
+public class NOTOperator implements Operator {
     private String queryString;
     private InvertedIndex index;
 
-    public OROperator(String queryString, InvertedIndex index) {
+    public NOTOperator(String queryString, InvertedIndex index) {
         this.queryString = queryString.substring(1);
         this.index = index;
     }
 
     @Override
-    public Set<DocumentFile> operate(Set<DocumentFile> prevSearchResult, WordUtil wordUtil) {
+    public Set<DocumentFile> operate(Set<DocumentFile> previewSearchResult, WordUtil wordUtil) {
         String simpleWord = wordUtil.extractRootWord(queryString);
         if (simpleWord != null)
-            prevSearchResult.addAll(index.getOccurredDocuments(simpleWord));
-        return prevSearchResult;
+            previewSearchResult.removeAll(index.getOccurredDocuments(simpleWord));
+        return previewSearchResult;
     }
 }

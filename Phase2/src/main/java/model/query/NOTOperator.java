@@ -16,10 +16,10 @@ public class NOTOperator implements Operator {
     }
 
     @Override
-    public Set<DocumentFile> operate(Set<DocumentFile> previewSearchResult, WordUtil wordUtil) {
+    public Set<DocumentFile> operate(Set<DocumentFile> prevSearchResult, WordUtil wordUtil) {
         String simpleWord = wordUtil.extractRootWord(queryString);
         if (simpleWord != null)
-            previewSearchResult.removeAll(index.getOccurredDocuments(simpleWord));
-        return previewSearchResult;
+            prevSearchResult.removeAll(index.getOccurredDocuments(simpleWord));
+        return prevSearchResult;
     }
 }

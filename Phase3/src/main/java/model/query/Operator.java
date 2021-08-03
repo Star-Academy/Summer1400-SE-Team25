@@ -6,5 +6,5 @@ import model.DocumentFile;
 import util.WordUtil;
 
 public interface Operator {
-    Set<DocumentFile> operate(Set<DocumentFile> prevSearchResult, WordUtil wordUtil);
+    Set<DocumentFile> operate(Set<DocumentFile> previewSearchResult, WordUtil wordUtil);
 }
