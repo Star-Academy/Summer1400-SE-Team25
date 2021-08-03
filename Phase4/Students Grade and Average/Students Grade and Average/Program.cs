@@ -6,7 +6,9 @@ namespace Students_Grade_and_Average
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var parser = new Parser("Students.txt", "Grades.txt");
+            var view = new View(parser.Students);
+            view.Run();
         }
     }
 }
