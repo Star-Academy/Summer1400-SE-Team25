@@ -16,9 +16,10 @@ namespace SearchEngine.Model
         public void AddWordOccurrence(string occurredWord, IDocument document)
         {
             if (_index.ContainsKey(occurredWord))
-                _index[occurredWord].Add(document);
-            else
-                _index[occurredWord] = new List<IDocument> { document };
+                if (!_index[occurredWord].Contains(document))
+                    _index[occurredWord].Add(document);
+                else
+                    _index[occurredWord] = new List<IDocument> { document };
         }
 
         public List<IDocument> GetWordOccurrence(string word)

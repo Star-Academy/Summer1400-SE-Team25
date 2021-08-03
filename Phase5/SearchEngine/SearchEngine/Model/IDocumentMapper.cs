@@ -6,6 +6,6 @@ namespace SearchEngine.Model
 {
     public interface IDocumentMapper
     {
-        void AddDocumentWordsToIndex(IInvertedIndex index);
+        void AddDocumentWordsToIndex(IInvertedIndex index, IDocument document);
     }
 }

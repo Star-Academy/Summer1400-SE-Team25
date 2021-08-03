@@ -1,21 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
 
 namespace SearchEngine.Model
 {
     public class DocumentMapper : IDocumentMapper
     {
-        private readonly IDocument _document;
-
-        public DocumentMapper(IDocument document)
+        public void AddDocumentWordsToIndex(IInvertedIndex index, IDocument document)
         {
-            this._document = document;
+            StreamReader file = new StreamReader(document.DocumentPath);
+            while (!file.EndOfStream)
+            {
+                index.AddWordOccurrence(ReadWord(file), document);
+            }
+            file.Close();
         }
 
-        public void AddDocumentWordsToIndex(IInvertedIndex index)
+        private string ReadWord(StreamReader inputStream)
         {
-            throw new NotImplementedException();
+            StringBuilder result = new StringBuilder();
+            char c = (char)inputStream.Read();
+            while (c != ' ' && !inputStream.EndOfStream)
+            {
+                result.Append(c);
+                c = (char)inputStream.Read();
+            }
+            return result.ToString();
         }
     }
 }
