@@ -7,5 +7,7 @@ namespace SearchEngine.Model
         public string Name { get; set; }
 
         public string GetDocumentPreview();
+
+        public string ToString();
     }
 }
