@@ -1,8 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchEngine", "SearchEngine\SearchEngine.csproj", "{96329C7F-5579-42A0-A83F-A25B195F55B1}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31515.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchEngine", "SearchEngine\SearchEngine.csproj", "{96329C7F-5579-42A0-A83F-A25B195F55B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchEngineTest", "SearchEngineTest\SearchEngineTest.csproj", "{DC90710E-7273-40C2-AFA4-95C588FDF966}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchEngineTest", "SearchEngineTest\SearchEngineTest.csproj", "{DC90710E-7273-40C2-AFA4-95C588FDF966}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +21,11 @@ Global
 		{DC90710E-7273-40C2-AFA4-95C588FDF966}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC90710E-7273-40C2-AFA4-95C588FDF966}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC90710E-7273-40C2-AFA4-95C588FDF966}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E9002D27-0B16-44AF-8F8C-492C9D779FC6}
 	EndGlobalSection
 EndGlobal
