@@ -6,18 +6,18 @@ namespace Students_Grade_and_Average
 {
     class View
     {
-        private List<Student> studentsList;
-        private const int maxStudentsViewed = 3;
+        private readonly List<Student> studentsList;
+        private const int MaxStudentsViewed = 3;
 
         public View(List<Student> studentsList)
         {
             this.studentsList = studentsList;
-            studentsList.Sort((a, b) => { return a.GradesAverage().CompareTo(b.GradesAverage()); });
+            studentsList.Sort((a, b) => a.GetGradesAverage().CompareTo(b.GetGradesAverage()) );
         }
 
         public void Run()
         {
-            for (int i = 0; i < maxStudentsViewed; i++)
+            for (int i = 0; i < MaxStudentsViewed; i++)
             {
                 Console.WriteLine(studentsList[i].ToString());
             }

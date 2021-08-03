@@ -9,10 +9,10 @@ namespace Students_Grade_and_Average
 {
     class Parser
     {
-        private List<Student> students;
+        private List<Student> _students;
         public List<Student> Students
         {
-            get { return students; }
+            get { return _students; }
         }
 
         private List<Grade> grades;
@@ -23,13 +23,12 @@ namespace Students_Grade_and_Average
         {
             this.studentsFilePath = studentsFilePath;
             this.gradesFilePath = gradesFilePath;
-            Parse();
         }
 
         public void Parse()
         {
             var studentsFile = new StreamReader(studentsFilePath);
-            students =
+            _students =
                 JsonSerializer.Deserialize<List<Student>>(studentsFile.ReadToEnd());
             studentsFile.Close();
             var gradesFile = new StreamReader(gradesFilePath);
@@ -40,10 +39,10 @@ namespace Students_Grade_and_Average
 
         private void AssignGradesToStudents()
         {
-            foreach(var stud in students)
+            foreach(var student in _students)
             {
-                stud.Grades = (from grade in grades
-                              where grade.StudentNumber == stud.StudentNumber
+                student.Grades = (from grade in grades
+                              where grade.StudentNumber == student.StudentNumber
                               select grade).ToList();
             }
         }

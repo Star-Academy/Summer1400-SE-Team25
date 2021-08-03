@@ -18,7 +18,7 @@ namespace Students_Grade_and_Average
             LastName = lastName;
         }
 
-        public double GradesAverage()
+        public double GetGradesAverage()
         {
             return Grades.Average(item => item.Score);
         }
@@ -26,7 +26,7 @@ namespace Students_Grade_and_Average
         public override string ToString()
         {
             return String.Format("FirstName : {0} | LastName : {1} | Score average : {2}",
-                FirstName, LastName, Math.Round(GradesAverage(), 2));
+                FirstName, LastName, Math.Round(GetGradesAverage(), 2));
         }
 
     }
