@@ -6,6 +6,11 @@ namespace SearchEngine.Model
     {
         private string _documentPath;
 
+        public Document(string documentPath)
+        {
+            _documentPath = documentPath;
+        }
+
         public string GetDocumentName()
         {
             throw new System.NotImplementedException();
