@@ -4,10 +4,12 @@ namespace SearchEngine.Model
 {
     public interface IDocument
     {
-        public string Name { get; set; }
 
-        public string GetDocumentPreview();
+        string DocumentPath { get; }
+        string Name { get; set; }
 
-        public string ToString();
+        string GetDocumentPreview();
+
+        string ToString();
     }
 }

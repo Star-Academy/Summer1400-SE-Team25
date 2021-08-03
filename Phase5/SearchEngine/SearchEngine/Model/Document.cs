@@ -9,6 +9,11 @@ namespace SearchEngine.Model
         private const int DocumentPreviewCharacterCount = 27;
         private const string DocumentPreviewEndingString = "...";
         private readonly string _documentPath;
+        public string DocumentPath
+        {
+            get { return _documentPath; }
+        }
+
         public string Name { get; set; }
 
         public Document(string documentPath)
