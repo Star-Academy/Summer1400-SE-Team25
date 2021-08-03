@@ -4,6 +4,8 @@ namespace SearchEngine.Model
 {
     public interface IDocument
     {
-        public string GetDocumentName();
+        public string Name { get; set; }
+
+        public string GetDocumentPreview();
     }
 }
