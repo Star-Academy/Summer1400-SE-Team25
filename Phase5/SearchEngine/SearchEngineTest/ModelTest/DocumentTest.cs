@@ -12,7 +12,7 @@ namespace SearchEngineTest.ModelTest
         private const string ValidDocumentPath = "EnglishData/57110";
         private const string InvalidDocumentPath = "EnglishData/100";
         private const string ValidDocumentPreview = "I have a 42 yr old male fri...";
-        private const string ValidDocumentToString = "57110\n\tI have a 42 yr old male fri...";
+        private const string ValidDocumentToString = "57110: \n\tI have a 42 yr old male fri...";
         private Document _document;
 
         public DocumentTest()
@@ -56,7 +56,7 @@ namespace SearchEngineTest.ModelTest
         {
             InitializeValidDocument();
             var documentToString = _document.ToString();
-
+            Assert.Equal(documentToString, ValidDocumentToString);
         }
     }
 }
