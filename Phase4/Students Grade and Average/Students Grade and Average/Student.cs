@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 
-namespace Students_Grade_and_Average
+namespace StudentsGradeandAverage
 {
-    class Student
+    public class Student
     {
         public List<Grade> Grades { get; set; }
         public int StudentNumber { get; set; }

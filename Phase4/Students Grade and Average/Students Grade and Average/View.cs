@@ -2,24 +2,23 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Students_Grade_and_Average
+namespace StudentsGradeandAverage
 {
     class View
     {
-        private readonly List<Student> studentsList;
+        private readonly List<Student> _studentsList;
         private const int MaxStudentsViewed = 3;
 
         public View(List<Student> studentsList)
         {
-            this.studentsList = studentsList;
-            studentsList.Sort((a, b) => a.GetGradesAverage().CompareTo(b.GetGradesAverage()) );
+            this._studentsList = studentsList;
         }
 
         public void Run()
         {
             for (int i = 0; i < MaxStudentsViewed; i++)
             {
-                Console.WriteLine(studentsList[i].ToString());
+                Console.WriteLine(_studentsList[i].ToString());
             }
         }
     }

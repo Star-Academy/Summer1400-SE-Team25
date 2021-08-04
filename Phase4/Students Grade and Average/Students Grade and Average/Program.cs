@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Students_Grade_and_Average
+namespace StudentsGradeandAverage
 {
     class Program
     {
@@ -8,7 +8,10 @@ namespace Students_Grade_and_Average
         {
             var parser = new Parser("Students.json", "Grades.json");
             parser.Parse();
-            var view = new View(parser.Students);
+            var studentsScoreHandler = new StudentsScoreHandler(parser.Students, parser.Grades);
+            studentsScoreHandler.AssignGradesToStudents();
+            studentsScoreHandler.SortStudentsByScore();
+            var view = new View(studentsScoreHandler.Students);
             view.Run();
         }
     }

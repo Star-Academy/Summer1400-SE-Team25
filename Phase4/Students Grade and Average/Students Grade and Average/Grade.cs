@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Students_Grade_and_Average
+namespace StudentsGradeandAverage
 {
-    class Grade
+    public class Grade
     {
         public int StudentNumber { get; set; }
         public double Score { get; set; }

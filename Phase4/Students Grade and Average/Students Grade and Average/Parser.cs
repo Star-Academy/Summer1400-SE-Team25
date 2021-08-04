@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text.Json;
 
-namespace Students_Grade_and_Average
+namespace StudentsGradeandAverage
 {
     class Parser
     {
@@ -15,7 +15,12 @@ namespace Students_Grade_and_Average
             get { return _students; }
         }
 
-        private List<Grade> grades;
+        private List<Grade> _grades;
+        public List<Grade> Grades
+        {
+            get { return _grades; }
+        }
+
         private string studentsFilePath;
         private string gradesFilePath;
 
@@ -32,19 +37,8 @@ namespace Students_Grade_and_Average
                 JsonSerializer.Deserialize<List<Student>>(studentsFile.ReadToEnd());
             studentsFile.Close();
             var gradesFile = new StreamReader(gradesFilePath);
-            grades =
+            _grades =
                 JsonSerializer.Deserialize<List<Grade>>(gradesFile.ReadToEnd());
-            AssignGradesToStudents();
-        }
-
-        private void AssignGradesToStudents()
-        {
-            foreach(var student in _students)
-            {
-                student.Grades = (from grade in grades
-                              where grade.StudentNumber == student.StudentNumber
-                              select grade).ToList();
-            }
         }
     }
 }
