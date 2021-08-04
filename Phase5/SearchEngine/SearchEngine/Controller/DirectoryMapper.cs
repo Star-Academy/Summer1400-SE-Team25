@@ -6,7 +6,7 @@ namespace SearchEngine.Controller
 {
     public class DirectoryMapper : IDirectoryMapper
     {
-        private IDictionary<string, Document> _directoryMapper;
+        private readonly IDictionary<string, Document> _directoryMapper;
 
         public DirectoryMapper()
         {
