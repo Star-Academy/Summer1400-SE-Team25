@@ -5,7 +5,7 @@ using Xunit;
 
 namespace SearchEngineTest.ModelTest
 {
-    public class DocumentMapperTest
+    public class DocumentParserTest
     {
         private const string ValidDocumentPath = "EnglishData/57110";
         private const string InvalidDocumentPath = "EnglishData/100";
@@ -16,7 +16,7 @@ namespace SearchEngineTest.ModelTest
         private IDocument _invalidDocument;
         private int _occuredWordCount;
 
-        public DocumentMapperTest()
+        public DocumentParserTest()
         {
             _documentMapper = new DocumentParser();
             _invertedIndex = Substitute.For<IInvertedIndex>();
