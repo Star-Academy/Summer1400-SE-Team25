@@ -24,12 +24,16 @@ namespace SearchEngineTest.ControllerTest
             {
                 document1
             };
+
+            _parser.When(x => x.AddDocumentWordsToInvertedIndex(_index, _documents[0])).
+                Do(x => { });
         }
 
         [Fact]
         public void TestHandler()
         {
-            var documentsHandler = new DocumentsHandler();
+            SetUp();
+            var documentsHandler = new DocumentsHandler(_parser);
 
             documentsHandler.AddDocumentsToIndex(_index, _documents);
 

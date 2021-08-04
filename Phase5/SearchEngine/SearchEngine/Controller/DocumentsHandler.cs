@@ -7,9 +7,17 @@ namespace SearchEngine.Controller
 {
     public class DocumentsHandler : IDocumentsHandler
     {
+        private IDocumentParser _parser;
+
+        public DocumentsHandler(IDocumentParser parser)
+        {
+            this._parser = parser;
+        }
+
         public void AddDocumentsToIndex(IInvertedIndex index, List<IDocument> documentsList)
         {
-            throw new NotImplementedException();
+            foreach (IDocument document in documentsList)
+                _parser.AddDocumentWordsToInvertedIndex(index, document);
         }
     }
 }
