@@ -13,7 +13,7 @@ namespace SearchEngineTest.ModelTest
         private const string InvalidDocumentPath = "EnglishData/100";
         private const string ValidDocumentPreview = "I have a 42 yr old male fri...";
         private const string ValidDocumentToString = "57110: \n\tI have a 42 yr old male fri...";
-        private Document _document;
+        private IDocument _document;
 
         public DocumentTest()
         {

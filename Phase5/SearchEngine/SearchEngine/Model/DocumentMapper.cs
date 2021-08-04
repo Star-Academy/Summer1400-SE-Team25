@@ -7,26 +7,16 @@ namespace SearchEngine.Model
 {
     public class DocumentMapper : IDocumentMapper
     {
-        public void AddDocumentWordsToIndex(IInvertedIndex index, IDocument document)
+        public void AddDocumentWordsToInvertedIndex(IInvertedIndex invertedIndex, IDocument document)
         {
-            StreamReader file = new StreamReader(document.DocumentPath);
-            while (!file.EndOfStream)
+            using var fileReader = new StreamReader(document.DocumentPath);
+            while (!fileReader.EndOfStream)
             {
-                index.AddWordOccurrence(ReadWord(file), document);
+                var words = fileReader.ReadLine()?.Split();
+                if (words == null) continue;
+                foreach (var word in words)
+                    invertedIndex.AddWordOccurrence(word, document);
             }
-            file.Close();
-        }
-
-        private string ReadWord(StreamReader inputStream)
-        {
-            StringBuilder result = new StringBuilder();
-            char c = (char)inputStream.Read();
-            while (c != ' ' && !inputStream.EndOfStream)
-            {
-                result.Append(c);
-                c = (char)inputStream.Read();
-            }
-            return result.ToString();
         }
     }
 }

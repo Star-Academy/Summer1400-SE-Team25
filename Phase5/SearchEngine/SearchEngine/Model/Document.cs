@@ -8,23 +8,18 @@ namespace SearchEngine.Model
     {
         private const int DocumentPreviewCharacterCount = 27;
         private const string DocumentPreviewEndingString = "...";
-        private readonly string _documentPath;
-        public string DocumentPath
-        {
-            get { return _documentPath; }
-        }
-
+        public string DocumentPath { get; }
         public string Name { get; set; }
 
         public Document(string documentPath)
         {
-            _documentPath = documentPath;
+            DocumentPath = documentPath;
             Name = Path.GetFileName(documentPath);
         }
 
         public string GetDocumentPreview()
         {
-            var documentLines = File.ReadLines(_documentPath);
+            var documentLines = File.ReadLines(DocumentPath);
             var firstLine = documentLines.First();
             return firstLine[..Math.Min(firstLine.Length, DocumentPreviewCharacterCount)] + DocumentPreviewEndingString;
         }
