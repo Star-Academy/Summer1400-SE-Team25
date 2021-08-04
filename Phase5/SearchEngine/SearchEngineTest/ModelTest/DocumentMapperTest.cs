@@ -10,7 +10,7 @@ namespace SearchEngineTest.ModelTest
         private const string ValidDocumentPath = "EnglishData/57110";
         private const string InvalidDocumentPath = "EnglishData/100";
         private const int ValidDocumentWordsCount = 201;
-        private IDocumentMapper _documentMapper;
+        private IDocumentParser _documentMapper;
         private IInvertedIndex _invertedIndex;
         private IDocument _validDocument;
         private IDocument _invalidDocument;
@@ -18,7 +18,7 @@ namespace SearchEngineTest.ModelTest
 
         public DocumentMapperTest()
         {
-            _documentMapper = new DocumentMapper();
+            _documentMapper = new DocumentParser();
             _invertedIndex = Substitute.For<IInvertedIndex>();
             _validDocument = Substitute.For<IDocument>();
             _invalidDocument = Substitute.For<IDocument>();

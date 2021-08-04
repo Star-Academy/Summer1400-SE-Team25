@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SearchEngine.Model
 {
-    public interface IDocumentMapper
+    public interface IDocumentParser
     {
         void AddDocumentWordsToInvertedIndex(IInvertedIndex invertedIndex, IDocument document);
     }
