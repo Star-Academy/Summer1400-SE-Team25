@@ -1,9 +1,12 @@
 using SearchEngine.Model;
+using System.Collections.Generic;
 
 namespace SearchEngine.Controller
 {
     public interface IDirectoryMapper
     {
-        public Document GetDocumentByDirectory(string directory);
+        public List<Document> ExtractDocuments(string directorName);
+
+        public List<Document> GetDocumentsList();
     }
 }
