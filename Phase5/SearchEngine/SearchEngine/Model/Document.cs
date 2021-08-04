@@ -29,5 +29,17 @@ namespace SearchEngine.Model
             return Name + ": \n" +
                    "\t" + GetDocumentPreview();
         }
+
+        public override bool Equals(object? obj)
+        {
+            if (!(obj is IDocument document))
+                return false;
+            return DocumentPath.Equals(document.DocumentPath);
+        }
+
+        public override int GetHashCode()
+        {
+            return DocumentPath.GetHashCode();
+        }
     }
 }
