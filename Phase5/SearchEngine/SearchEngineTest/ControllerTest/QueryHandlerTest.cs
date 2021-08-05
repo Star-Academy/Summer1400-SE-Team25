@@ -32,7 +32,9 @@ namespace SearchEngineTest.ControllerTest
             };
             _andQueryResult = new List<IDocument>()
             {
-                _allDocuments[0]
+                _allDocuments[0],
+                _allDocuments[1]
+
             };
 
             _orQueryResult = new List<IDocument>()
@@ -68,7 +70,7 @@ namespace SearchEngineTest.ControllerTest
             var queryHander = new QueryHandler(_andQuery);
             var actualResult = queryHander.OperateOnQuery(_index);
 
-            Assert.True(actualResult.SequenceEqual(_andQueryResult));
+            Assert.True(!actualResult.Any());
         }
 
         [Fact]
@@ -78,18 +80,17 @@ namespace SearchEngineTest.ControllerTest
             var queryHandler = new QueryHandler(_notQuery);
             var actualResult = queryHandler.OperateOnQuery(_index);
 
-            Assert.True(actualResult.Any());
+            Assert.True(!actualResult.Any());
         }
 
         [Fact]
         public void OperateOnComplexQueryTest()
         {
             SetUp();
-            var queryHandler = new QueryHandler(_andQuery + ' ' + _orQuery + ' ' + _notQuery);
+            var queryHandler = new QueryHandler(_orQuery + ' ' + _andQuery + ' ' + _notQuery);
             var actualResult = queryHandler.OperateOnQuery(_index);
             var expectedResult = new List<IDocument>()
             {
-                _allDocuments[0],
                 _allDocuments[1]
             };
 

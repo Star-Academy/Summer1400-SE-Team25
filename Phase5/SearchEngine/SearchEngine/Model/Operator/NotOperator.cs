@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace SearchEngine.Model.Operator
 {
-    public class NotOperator
+    public class NotOperator : IOperator
     {
         public string Query { get; }
 

@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace SearchEngine.Model.Operator
 {
-    public class OrOperator
+    public class OrOperator : IOperator
     {
         public string Query { get; }
 
