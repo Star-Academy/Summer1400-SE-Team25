@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace SearchEngine.Model
+namespace SearchLib.Model
 {
     public class DocumentParser : IDocumentParser
     {

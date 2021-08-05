@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using SearchEngine.Model.Operator;
-using SearchEngine.Model;
+using SearchLib.Model.Operator;
+using SearchLib.Model;
 using Xunit;
 using NSubstitute;
 using System.Linq;
 
-namespace SearchEngineTest.ModelTest.OperatorTest
+namespace SearchLibTest.ModelTest.OperatorTest
 {
     public class OperatorTest
     {

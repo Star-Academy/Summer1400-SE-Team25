@@ -1,9 +1,9 @@
 using System.IO;
 using NSubstitute;
-using SearchEngine.Model;
+using SearchLib.Model;
 using Xunit;
 
-namespace SearchEngineTest.ModelTest
+namespace SearchLibTest.ModelTest
 {
     public class DocumentParserTest
     {

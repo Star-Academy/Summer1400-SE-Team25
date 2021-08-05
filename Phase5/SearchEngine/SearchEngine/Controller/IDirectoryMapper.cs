@@ -1,12 +1,10 @@
-using SearchEngine.Model;
+using SearchLib.Model;
 using System.Collections.Generic;
 
-namespace SearchEngine.Controller
+namespace SearchLib.Controller
 {
     public interface IDirectoryMapper
     {
         public List<Document> ExtractDocuments(string directorName);
-
-        public List<Document> GetDocumentsList();
     }
 }

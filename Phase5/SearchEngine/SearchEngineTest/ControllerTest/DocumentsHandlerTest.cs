@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 using Xunit;
 using NSubstitute;
-using SearchEngine.Model;
-using SearchEngine.Controller;
+using SearchLib.Model;
+using SearchLib.Controller;
 
-namespace SearchEngineTest.ControllerTest
+namespace SearchLibTest.ControllerTest
 {
     public class DocumentsHandlerTest
     {

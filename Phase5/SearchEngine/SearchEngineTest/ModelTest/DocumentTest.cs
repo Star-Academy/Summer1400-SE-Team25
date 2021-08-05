@@ -1,11 +1,11 @@
 using System;
 using System.IO;
-using SearchEngine.Model;
+using SearchLib.Model;
 using Xunit;
 using Xunit.Abstractions;
 using Xunit.Sdk;
 
-namespace SearchEngineTest.ModelTest
+namespace SearchLibTest.ModelTest
 {
     public class DocumentTest
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace SearchEngine.Model
+namespace SearchLib.Model
 {
     public interface IDocument
     {

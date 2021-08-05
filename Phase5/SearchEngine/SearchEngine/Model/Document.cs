@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Linq;
 
-namespace SearchEngine.Model
+namespace SearchLib.Model
 {
     public class Document : IDocument
     {

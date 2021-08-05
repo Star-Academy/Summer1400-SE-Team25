@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SearchEngine
+namespace SearchLib
 {
     class Program
     {

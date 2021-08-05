@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 
-namespace SearchEngine.Model.Operator
+namespace SearchLib.Model.Operator
 {
     public class OrOperator : IOperator
     {

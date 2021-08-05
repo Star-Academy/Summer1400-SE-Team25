@@ -1,10 +1,10 @@
-﻿using SearchEngine.Model;
+﻿using SearchLib.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using SearchEngine.Model.Operator;
+using SearchLib.Model.Operator;
 
-namespace SearchEngine.Controller
+namespace SearchLib.Controller
 {
     public class QueryHandler : IQueryHandler
     {

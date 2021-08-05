@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchEngine", "SearchEngine\SearchEngine.csproj", "{96329C7F-5579-42A0-A83F-A25B195F55B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchLib", "SearchEngine\SearchLib.csproj", "{96329C7F-5579-42A0-A83F-A25B195F55B1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchEngineTest", "SearchEngineTest\SearchEngineTest.csproj", "{DC90710E-7273-40C2-AFA4-95C588FDF966}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchLibTest", "SearchEngineTest\SearchLibTest.csproj", "{DC90710E-7273-40C2-AFA4-95C588FDF966}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

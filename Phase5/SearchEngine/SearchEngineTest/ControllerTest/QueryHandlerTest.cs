@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using SearchEngine.Controller;
-using SearchEngine.Model;
+using SearchLib.Controller;
+using SearchLib.Model;
 using Xunit;
 using NSubstitute;
 using System.Linq;
 
-namespace SearchEngineTest.ControllerTest
+namespace SearchLibTest.ControllerTest
 {
     public class QueryHandlerTest
     {

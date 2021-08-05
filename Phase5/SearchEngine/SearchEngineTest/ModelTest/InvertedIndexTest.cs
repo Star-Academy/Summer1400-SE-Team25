@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 using Xunit;
 using NSubstitute;
-using SearchEngine.Model;
+using SearchLib.Model;
 using System.Linq;
 
-namespace SearchEngineTest.ModelTest
+namespace SearchLibTest.ModelTest
 {
     public class InvertedIndexTest
     {

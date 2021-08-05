@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SearchEngine.Model.Operator
+namespace SearchLib.Model.Operator
 {
     public interface IOperator
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SearchEngine.Model
+namespace SearchLib.Model
 {
     public class InvertedIndex : IInvertedIndex
     {
