@@ -5,6 +5,6 @@ namespace SearchLib.Controller
 {
     public interface IDirectoryMapper
     {
-        public List<Document> ExtractDocuments(string directorName);
+        public List<IDocument> ExtractDocuments(string directorName);
     }
 }

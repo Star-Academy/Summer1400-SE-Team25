@@ -7,10 +7,10 @@ namespace SearchLib.Controller
 {
     public class DirectoryMapper : IDirectoryMapper
     {
-        public List<Document> ExtractDocuments(string directorName)
+        public List<IDocument> ExtractDocuments(string directorName)
         {
             string[] fileNames = Directory.GetFiles(directorName);
-            var currentDirectoryDocuments = new List<Document>();
+            var currentDirectoryDocuments = new List<IDocument>();
             foreach (string fileName in fileNames)
             {
                 var document = new Document(fileName);

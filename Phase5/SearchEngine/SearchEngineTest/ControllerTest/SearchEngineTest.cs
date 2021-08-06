@@ -27,10 +27,11 @@ namespace SearchLibTest.ControllerTest
             var expectedResult = new List<IDocument>()
             {
                 new Document(firstFilePath),
-                new Document(secondFilePath)
+                new Document(secondFilePath),
+                new Document(thirdFilePath)
             };
 
-            Assert.True(actualResult.SequenceEqual(expectedResult));
+            Assert.True(actualResult.Intersect(expectedResult).Count() == actualResult.Count());
         }
 
         [Fact]
@@ -45,7 +46,7 @@ namespace SearchLibTest.ControllerTest
                 new Document(secondFilePath)
             };
 
-            Assert.True(actualResult.SequenceEqual(expectedResult));
+            Assert.True(actualResult.SequenceEqual(expectedResult, new DocumentFileComparator()));
         }
 
         [Fact]
@@ -61,7 +62,7 @@ namespace SearchLibTest.ControllerTest
                 new Document(thirdFilePath)
             };
 
-            Assert.True(actualResult.SequenceEqual(expectedResult));
+            Assert.True(actualResult.SequenceEqual(expectedResult, new DocumentFileComparator()));
         }
     }
 }
