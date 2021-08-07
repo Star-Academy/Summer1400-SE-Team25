@@ -11,20 +11,14 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
 public class InvertedIndexTest {
-    private InvertedIndex invertedIndex;
     private final String WORD = "friend";
+    private InvertedIndex invertedIndex;
+
     @Mock
     private DocumentFile documentFile;
 
     private void initializeInvertedIndex() {
         invertedIndex = new InvertedIndex();
-    }
-
-    @Test
-    public void testAddDocument() {
-        initializeInvertedIndex();
-        invertedIndex.addDocument(documentFile);
-        assertTrue(invertedIndex.getDocuments().contains(documentFile));
     }
 
     @Test

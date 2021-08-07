@@ -19,13 +19,11 @@ public class InvertedIndex {
     }
 
     public void addWord(DocumentFile documentFile, String word) {
-        if (!invertedList.containsKey(word))
+        if (!invertedList.containsKey(word)) {
             invertedList.put(word, new HashSet<>());
+            documentList.add(documentFile);
+        }
         invertedList.get(word).add(documentFile);
-    }
-
-    public void addDocument(DocumentFile newDocument) {
-        documentList.add(newDocument);
     }
 
     public Set<DocumentFile> getOccurredDocuments(String word) {

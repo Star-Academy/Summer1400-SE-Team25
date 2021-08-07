@@ -28,12 +28,12 @@ public class DocumentFileTest {
     @Test
     public void testException() {
         DocumentFile invalidDocument = new DocumentFile(FIRST_DOCUMENT_NAME, INVALID_DOCUMENT_PATH, FIRST_DOCUMENT_ID);
-        invalidDocument.previewDocument();
+        invalidDocument.getPreviewDocument();
     }
 
     @Test
     public void testDocumentPreview() {
-        String documentPreview = firstDocumentFile.previewDocument();
+        String documentPreview = firstDocumentFile.getPreviewDocument();
         assertEquals(FIRST_DOCUMENT_PREVIEW, documentPreview);
     }
 

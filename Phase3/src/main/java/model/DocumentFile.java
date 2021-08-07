@@ -20,26 +20,29 @@ public class DocumentFile {
         this.docFile = new File(path);
     }
 
-    public String previewDocument() {
-        var result = new StringBuilder();
-        try (Scanner docSc = new Scanner(new FileReader(docFile))) {
-            String line = docSc.nextLine();
-            result.append(getLinePreview(line));
-            result.append(END_OF_FILE_PREVIEW);
+    public String getPreviewDocument() {
+        var result = "";
+        try (Scanner documentScanner = new Scanner(new FileReader(docFile))) {
+            result = getLinePreview(documentScanner.nextLine());
         } catch (IOException e) {
-//            e.printStackTrace();
+            e.printStackTrace();
         }
-        return result.toString();
+        return result;
     }
 
     private String getLinePreview(String line) {
+        return getHeadOfLine(line) +
+                END_OF_FILE_PREVIEW;
+    }
+
+    private String getHeadOfLine(String line) {
         int characterCount = Math.min(line.length(), DOCUMENT_PREVIEW_CHARACTER_COUNT);
         return line.substring(0, characterCount);
     }
 
     @Override
     public String toString() {
-        return fileName + ":\n\t" + previewDocument() + "\n";
+        return fileName + ":\n\t" + getPreviewDocument() + "\n";
     }
 
     @Override
