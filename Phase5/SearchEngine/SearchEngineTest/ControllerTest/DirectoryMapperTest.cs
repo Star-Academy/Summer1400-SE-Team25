@@ -9,8 +9,9 @@ namespace SearchLibTest.ControllerTest
     public class DirectoryMapperTest
     {
         private const string ValidDirPath = "EnglishData";
-        private const string FirstValidDocumentPath = "EnglishData/57110";
-        private const string SecondValidDocumentPath = "EnglishData/58119";
+        private const string FirstValidDocumentName = "57110";
+        private const string SecondValidDocumentName = "58043";
+        private const string ThirdValidDocumentName = "58044";
         private IDirectoryMapper _directoryMapper;
 
         [Fact]
@@ -20,11 +21,12 @@ namespace SearchLibTest.ControllerTest
             var actualResult = _directoryMapper.ExtractDocuments(ValidDirPath);
             var expectedResult = new System.Collections.Generic.List<Document>()
             {
-                new Document(ValidDirPath + Path.DirectorySeparatorChar + "57110"),
-                new Document(ValidDirPath + Path.DirectorySeparatorChar + "58043")
+                new Document(ValidDirPath + Path.DirectorySeparatorChar + FirstValidDocumentName),
+                new Document(ValidDirPath + Path.DirectorySeparatorChar + SecondValidDocumentName),
+                new Document(ValidDirPath + Path.DirectorySeparatorChar + ThirdValidDocumentName)
             };
 
-            Assert.True(actualResult.SequenceEqual(expectedResult));
+            Assert.True(actualResult.SequenceEqual(expectedResult, new DocumentFileComparator()));
         }
     }
 }
