@@ -49,7 +49,7 @@ namespace SearchLibTest.ControllerTest
                 new Document(_secondFilePath)
             };
 
-            Assert.True(actualResult.SequenceEqual(expectedResult, new DocumentFileComparator()));
+            Assert.True(actualResult.SequenceEqual(expectedResult));
         }
 
         [Fact]
@@ -63,7 +63,7 @@ namespace SearchLibTest.ControllerTest
                 new Document(_thirdFilePath)
             };
 
-            Assert.True(actualResult.SequenceEqual(expectedResult, new DocumentFileComparator()));
+            Assert.True(actualResult.SequenceEqual(expectedResult));
         }
     }
 }
