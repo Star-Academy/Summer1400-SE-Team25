@@ -8,7 +8,7 @@ namespace SearchLib.Controller
 {
     public class QueryHandler : IQueryHandler
     {
-        private List<IOperator> _operatorsList;
+        private readonly List<IOperator> _operatorsList;
         public QueryHandler(string searchQuery)
         {
             this._operatorsList = new List<IOperator>();
@@ -18,8 +18,8 @@ namespace SearchLib.Controller
         public List<IDocument> OperateOnQuery(IInvertedIndex index)
         {
             var result = new List<IDocument>();
-            foreach (IOperator op in _operatorsList)
-                result = op.Operate(index, result);
+            foreach (var operation in _operatorsList)
+                result = operation.Operate(index, result);
             return result;
         }
 
@@ -27,12 +27,18 @@ namespace SearchLib.Controller
         {
             foreach (string query in searchQuery)
             {
-                if (query[0] == '+')
-                    _operatorsList.Add(new OrOperator(query.Substring(1)));
-                else if (query[0] == '-')
-                    _operatorsList.Add(new NotOperator(query.Substring(1)));
-                else
-                    _operatorsList.Add(new AndOperator(query));
+                switch (query[0])
+                {
+                    case '+':
+                        _operatorsList.Add(new OrOperator(query[1..]));
+                        break;
+                    case '-':
+                        _operatorsList.Add(new NotOperator(query[1..]));
+                        break;
+                    default:
+                        _operatorsList.Add(new AndOperator(query));
+                        break;
+                }
             }
         }
     }

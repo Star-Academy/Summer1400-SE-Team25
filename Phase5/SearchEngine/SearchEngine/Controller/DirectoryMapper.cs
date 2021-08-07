@@ -9,15 +9,21 @@ namespace SearchLib.Controller
     {
         public List<IDocument> ExtractDocuments(string directorName)
         {
-            string[] fileNames = Directory.GetFiles(directorName);
+            var fileNames = Directory.GetFiles(directorName);
             var currentDirectoryDocuments = new List<IDocument>();
-            foreach (string fileName in fileNames)
+            foreach (var fileName in fileNames)
             {
                 var document = new Document(fileName);
-                currentDirectoryDocuments.Add(document);
+                if (!IsHiddenFile(document)) // do not add hidden files
+                    currentDirectoryDocuments.Add(document);
             }
             return currentDirectoryDocuments;
             
+        }
+
+        private bool IsHiddenFile(Document document)
+        {
+            return document.Name[0] == '.';
         }
     }
 }

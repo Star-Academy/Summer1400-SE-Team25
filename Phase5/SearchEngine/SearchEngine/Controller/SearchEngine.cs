@@ -6,8 +6,14 @@ namespace SearchLib.Controller
 {
     public class SearchEngine : ISearchEngine
     {
-        private IInvertedIndex _index = new InvertedIndex();
-        private List<IDocument> _documentsList = new List<IDocument>();
+        private IInvertedIndex _index;
+        private List<IDocument> _documentsList;
+
+        public SearchEngine()
+        {
+            _index = new InvertedIndex();
+            _documentsList = new List<IDocument>();
+        }
 
         public void AddDirPath(string dirPath)
         {

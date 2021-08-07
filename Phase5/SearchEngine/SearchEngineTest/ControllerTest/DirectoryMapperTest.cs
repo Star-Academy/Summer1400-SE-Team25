@@ -1,16 +1,19 @@
+using System;
 using SearchLib.Controller;
 using SearchLib.Model;
 using Xunit;
 using System.IO;
 using System.Linq;
+using Xunit.Abstractions;
 
 namespace SearchLibTest.ControllerTest
 {
     public class DirectoryMapperTest
     {
         private const string ValidDirPath = "EnglishData";
-        private const string FirstValidDocumentPath = "EnglishData/57110";
-        private const string SecondValidDocumentPath = "EnglishData/58119";
+        private readonly string _firstValidDocumentPath = "EnglishData" + Path.DirectorySeparatorChar + "57110";
+        private readonly string _secondValidDocumentPath = "EnglishData" + Path.DirectorySeparatorChar + "58043";
+        private readonly string _thirdValidDocumentPath = "EnglishData" + Path.DirectorySeparatorChar + "58044";
         private IDirectoryMapper _directoryMapper;
 
         [Fact]
@@ -20,11 +23,11 @@ namespace SearchLibTest.ControllerTest
             var actualResult = _directoryMapper.ExtractDocuments(ValidDirPath);
             var expectedResult = new System.Collections.Generic.List<Document>()
             {
-                new Document(ValidDirPath + Path.DirectorySeparatorChar + "57110"),
-                new Document(ValidDirPath + Path.DirectorySeparatorChar + "58043")
+                new Document(_firstValidDocumentPath),
+                new Document(_secondValidDocumentPath),
+                new Document(_thirdValidDocumentPath)
             };
-
-            Assert.True(actualResult.SequenceEqual(expectedResult));
+            Assert.True(actualResult.All(expectedResult.Contains) && actualResult.Count == expectedResult.Count);
         }
     }
 }

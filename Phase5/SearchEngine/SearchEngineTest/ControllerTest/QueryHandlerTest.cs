@@ -11,15 +11,15 @@ namespace SearchLibTest.ControllerTest
 {
     public class QueryHandlerTest
     {
-        private readonly string _andQuery = "test1";
-        private readonly string _orQuery = "+test2";
-        private readonly string _notQuery = "-test3";
+        private const string AndQuery = "test1";
+        private const string OrQuery = "+test2";
+        private const string NotQuery = "-test3";
         private IInvertedIndex _index;
-        private List<IDocument> _allDocuments;
+        private IList<IDocument> _allDocuments;
 
-        private List<IDocument> _andQueryResult;
-        private List<IDocument> _orQueryResult;
-        private List<IDocument> _notQueryResult;
+        private IList<IDocument> _andQueryResult;
+        private IList<IDocument> _orQueryResult;
+        private IList<IDocument> _notQueryResult;
 
         private void SetUp()
         {
@@ -48,16 +48,16 @@ namespace SearchLibTest.ControllerTest
                 _allDocuments[2]
             };
 
-            _index.GetWordOccurrence(_andQuery).Returns(_andQueryResult);
-            _index.GetWordOccurrence(_orQuery.Substring(1)).Returns(_orQueryResult);
-            _index.GetWordOccurrence(_notQuery.Substring(1)).Returns(_notQueryResult);
+            _index.GetWordOccurrence(AndQuery).Returns(_andQueryResult);
+            _index.GetWordOccurrence(OrQuery.Substring(1)).Returns(_orQueryResult);
+            _index.GetWordOccurrence(NotQuery.Substring(1)).Returns(_notQueryResult);
         }
 
         [Fact]
         public void OperateOnOrQueryTest()
         {
             SetUp();
-            var queryHandler = new QueryHandler(_orQuery);
+            var queryHandler = new QueryHandler(OrQuery);
             var actualResult = queryHandler.OperateOnQuery(_index);
 
             Assert.True(actualResult.SequenceEqual(_orQueryResult));
@@ -67,7 +67,7 @@ namespace SearchLibTest.ControllerTest
         public void OperateOnAndQueryTest()
         {
             SetUp();
-            var queryHander = new QueryHandler(_andQuery);
+            var queryHander = new QueryHandler(AndQuery);
             var actualResult = queryHander.OperateOnQuery(_index);
 
             Assert.True(!actualResult.Any());
@@ -77,7 +77,7 @@ namespace SearchLibTest.ControllerTest
         public void OperatOnNotQueryTest()
         {
             SetUp();
-            var queryHandler = new QueryHandler(_notQuery);
+            var queryHandler = new QueryHandler(NotQuery);
             var actualResult = queryHandler.OperateOnQuery(_index);
 
             Assert.True(!actualResult.Any());
@@ -87,7 +87,7 @@ namespace SearchLibTest.ControllerTest
         public void OperateOnComplexQueryTest()
         {
             SetUp();
-            var queryHandler = new QueryHandler(_orQuery + ' ' + _andQuery + ' ' + _notQuery);
+            var queryHandler = new QueryHandler(OrQuery + ' ' + AndQuery + ' ' + NotQuery);
             var actualResult = queryHandler.OperateOnQuery(_index);
             var expectedResult = new List<IDocument>()
             {

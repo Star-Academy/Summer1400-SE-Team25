@@ -9,26 +9,31 @@ namespace SearchLibTest.ControllerTest
 {
     public class SearchEngineTest
     {
-        private const string validDirPath = "EnglishData";
-        private readonly string searchQuery1 = "+happen +old +convention";
-        private readonly string searchQuery2 = "+happen +old +convention same";
-        private readonly string searchQuery3 = "+happen +old +convention -same";
-        private readonly string firstFilePath = validDirPath + Path.DirectorySeparatorChar + "57110";
-        private readonly string secondFilePath = validDirPath + Path.DirectorySeparatorChar + "58043";
-        private readonly string thirdFilePath = validDirPath + Path.DirectorySeparatorChar + "58044";
+        private const string ValidDirPath = "EnglishData";
+        private const string SearchQuery1 = "+happen +old +convention";
+        private const string SearchQuery2 = "+happen +old +convention same";
+        private const string SearchQuery3 = "+happen +old +convention -same";
+        private readonly string _firstFilePath = ValidDirPath + Path.DirectorySeparatorChar + "57110";
+        private readonly string _secondFilePath = ValidDirPath + Path.DirectorySeparatorChar + "58043";
+        private readonly string _thirdFilePath = ValidDirPath + Path.DirectorySeparatorChar + "58044";
+        private ISearchEngine _searchEngine;
+
+        private void InitializeProperties()
+        {
+            _searchEngine = new SearchEngine();
+            _searchEngine.AddDirPath(ValidDirPath);
+        }
 
         [Fact]
-        public void Searctest1()
+        public void SearchTest1()
         {
-            var searchEngine = new SearchEngine();
-            searchEngine.AddDirPath(validDirPath);
-
-            var actualResult = searchEngine.Search(searchQuery1);
+            InitializeProperties();
+            var actualResult = _searchEngine.Search(SearchQuery1);
             var expectedResult = new List<IDocument>()
             {
-                new Document(firstFilePath),
-                new Document(secondFilePath),
-                new Document(thirdFilePath)
+                new Document(_firstFilePath),
+                new Document(_secondFilePath),
+                new Document(_thirdFilePath)
             };
 
             Assert.True(actualResult.Intersect(expectedResult).Count() == actualResult.Count());
@@ -37,13 +42,11 @@ namespace SearchLibTest.ControllerTest
         [Fact]
         public void SearchTest2()
         {
-            var searchEngine = new SearchEngine();
-            searchEngine.AddDirPath(validDirPath);
-
-            var actualResult = searchEngine.Search(searchQuery2);
+            InitializeProperties();
+            var actualResult = _searchEngine.Search(SearchQuery2);
             var expectedResult = new List<IDocument>()
             {
-                new Document(secondFilePath)
+                new Document(_secondFilePath)
             };
 
             Assert.True(actualResult.SequenceEqual(expectedResult, new DocumentFileComparator()));
@@ -52,14 +55,12 @@ namespace SearchLibTest.ControllerTest
         [Fact]
         public void SearchTest3()
         {
-            var searchEngine = new SearchEngine();
-            searchEngine.AddDirPath(validDirPath);
-
-            var actualResult = searchEngine.Search(searchQuery3);
+            InitializeProperties();
+            var actualResult = _searchEngine.Search(SearchQuery3);
             var expectedResult = new List<IDocument>()
             {
-                new Document(firstFilePath),
-                new Document(thirdFilePath)
+                new Document(_firstFilePath),
+                new Document(_thirdFilePath)
             };
 
             Assert.True(actualResult.SequenceEqual(expectedResult, new DocumentFileComparator()));
