@@ -7,7 +7,8 @@ import model.InvertedIndex;
 import view.UserView;
 
 public class Main {
-    final static String DEFAULT_PATH = "src/main/java/EnglishData";
+    private final static String DEFAULT_PATH = "src/main/java/EnglishData";
+
     public static void main(String[] args) {
         var invertedIndex = new InvertedIndex();
         var fileMapper = new FileMapper();
