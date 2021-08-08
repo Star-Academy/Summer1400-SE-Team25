@@ -19,7 +19,8 @@ import controller.SearchEngine;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UserViewTest {
-    private final ByteArrayInputStream inContent = new ByteArrayInputStream("Test".getBytes());
+    private final String INPUT_STREAM_INPUT = "Test";
+    private final ByteArrayInputStream inContent = new ByteArrayInputStream(INPUT_STREAM_INPUT.getBytes());
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
     private final InputStream originalIn = System.in;

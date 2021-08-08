@@ -11,21 +11,23 @@ import org.tartarus.snowball.ext.PorterStemmer;
 public class WordUtil {
     private List<String> stopWords;
     private final String STOP_WORDS_PATH;
+    private final PorterStemmer stemmer;
 
     public WordUtil() {
         stopWords = new ArrayList<>();
         STOP_WORDS_PATH = "src/main/java/StopWords.txt";
+        stemmer = new PorterStemmer();
         initStopWords();
     }
 
     public WordUtil(String STOP_WORDS_PATH) {
         this.STOP_WORDS_PATH = STOP_WORDS_PATH;
+        stemmer = new PorterStemmer();
         initStopWords();
     }
 
     public String extractRootWord(String word){
         word = word.toLowerCase();
-        var stemmer = new PorterStemmer();
         stemmer.setCurrent(word);
         stemmer.stem();
         word = stemmer.getCurrent();

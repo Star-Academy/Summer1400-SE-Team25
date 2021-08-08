@@ -25,7 +25,7 @@ public class DocumentFile {
         try (Scanner documentScanner = new Scanner(new FileReader(docFile))) {
             result = getLinePreview(documentScanner.nextLine());
         } catch (IOException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
         return result;
     }
