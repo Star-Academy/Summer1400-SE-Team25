@@ -37,13 +37,6 @@ namespace SearchLibTest.ModelTest
         }
 
         [Fact]
-        public void TestInvalidDocument()
-        {
-            InitializeInvalidDocument();
-            // Assert.Throws<FileNotFoundException>(InitializeInvalidDocument);
-        }
-
-        [Fact]
         public void TestDocumentPreview()
         {
             InitializeValidDocument();

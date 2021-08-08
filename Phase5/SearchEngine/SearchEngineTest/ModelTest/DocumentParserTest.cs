@@ -42,12 +42,5 @@ namespace SearchLibTest.ModelTest
             Assert.Equal(ValidDocumentWordsCount, _occuredWordCount);
         }
 
-        [Fact]
-        public void TestAddInvalidDocumentWordsToInvertedIndex()
-        {
-            InitializeProperties();
-            // Assert.Throws<FileNotFoundException>(() =>
-            //     _documentMapper.AddDocumentWordsToInvertedIndex(_invertedIndex, _invalidDocument));
-        }
     }
 }
