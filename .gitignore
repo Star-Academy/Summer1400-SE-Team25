@@ -456,10 +456,7 @@ release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
-# https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
-
-# End of https://www.toptal.com/developers/gitignore/api/maven
 
 # CMake
 cmake-build-*/
@@ -517,8 +514,6 @@ modules.xml
 # Ignore all local history of files
 .history
 .ionide
-
-# End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,jetbrains+all,java,csharp
 
 target/
 pom.xml.tag
