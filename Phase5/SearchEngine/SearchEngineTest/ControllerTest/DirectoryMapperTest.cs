@@ -10,7 +10,7 @@ namespace SearchLibTest.ControllerTest
 {
     public class DirectoryMapperTest
     {
-        private const string ValidDirPath = "EnglishData";
+        private readonly string ValidDirPath = "EnglishData";
         private readonly string _firstValidDocumentPath = "EnglishData" + Path.DirectorySeparatorChar + "57110";
         private readonly string _secondValidDocumentPath = "EnglishData" + Path.DirectorySeparatorChar + "58043";
         private readonly string _thirdValidDocumentPath = "EnglishData" + Path.DirectorySeparatorChar + "58044";

@@ -11,9 +11,9 @@ namespace SearchLibTest.ControllerTest
 {
     public class QueryHandlerTest
     {
-        private const string AndQuery = "test1";
-        private const string OrQuery = "+test2";
-        private const string NotQuery = "-test3";
+        private readonly string AndQuery = "test1";
+        private readonly string OrQuery = "+test2";
+        private readonly string NotQuery = "-test3";
         private IInvertedIndex _index;
         private IList<IDocument> _allDocuments;
 

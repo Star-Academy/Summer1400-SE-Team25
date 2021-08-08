@@ -9,10 +9,10 @@ namespace SearchLibTest.ModelTest
 {
     public class DocumentTest
     {
-        private const string ValidDocumentPath = "EnglishData/57110";
-        private const string InvalidDocumentPath = "EnglishData/100";
-        private const string ValidDocumentPreview = "I have a 42 yr old male fri...";
-        private const string ValidDocumentToString = "57110: \n\tI have a 42 yr old male fri...";
+        private readonly string ValidDocumentPath = "EnglishData/57110";
+        private readonly string InvalidDocumentPath = "EnglishData/100";
+        private readonly string ValidDocumentPreview = "I have a 42 yr old male fri...";
+        private readonly string ValidDocumentToString = "57110: \n\tI have a 42 yr old male fri...";
         private IDocument _document;
 
         public DocumentTest()

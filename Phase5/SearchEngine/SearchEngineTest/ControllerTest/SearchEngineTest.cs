@@ -9,17 +9,20 @@ namespace SearchLibTest.ControllerTest
 {
     public class SearchEngineTest
     {
-        private const string ValidDirPath = "EnglishData";
-        private const string SearchQuery1 = "+happen +old +convention";
-        private const string SearchQuery2 = "+happen +old +convention same";
-        private const string SearchQuery3 = "+happen +old +convention -same";
-        private readonly string _firstFilePath = ValidDirPath + Path.DirectorySeparatorChar + "57110";
-        private readonly string _secondFilePath = ValidDirPath + Path.DirectorySeparatorChar + "58043";
-        private readonly string _thirdFilePath = ValidDirPath + Path.DirectorySeparatorChar + "58044";
+        private readonly string ValidDirPath = "EnglishData";
+        private readonly string SearchQuery1 = "+happen +old +convention";
+        private readonly string SearchQuery2 = "+happen +old +convention same";
+        private readonly string SearchQuery3 = "+happen +old +convention -same";
+        private readonly string _firstFilePath;
+        private readonly string _secondFilePath;
+        private readonly string _thirdFilePath;
         private ISearchEngine _searchEngine;
 
-        private void InitializeProperties()
+        public SearchEngineTest()
         {
+            _firstFilePath = ValidDirPath + Path.DirectorySeparatorChar + "57110";
+            _secondFilePath = ValidDirPath + Path.DirectorySeparatorChar + "58043";
+            _thirdFilePath = ValidDirPath + Path.DirectorySeparatorChar + "58044";
             _searchEngine = new SearchEngine();
             _searchEngine.AddDirPath(ValidDirPath);
         }
@@ -27,7 +30,6 @@ namespace SearchLibTest.ControllerTest
         [Fact]
         public void SearchTest1()
         {
-            InitializeProperties();
             var actualResult = _searchEngine.Search(SearchQuery1);
             var expectedResult = new List<IDocument>()
             {
@@ -42,7 +44,6 @@ namespace SearchLibTest.ControllerTest
         [Fact]
         public void SearchTest2()
         {
-            InitializeProperties();
             var actualResult = _searchEngine.Search(SearchQuery2);
             var expectedResult = new List<IDocument>()
             {
@@ -55,7 +56,6 @@ namespace SearchLibTest.ControllerTest
         [Fact]
         public void SearchTest3()
         {
-            InitializeProperties();
             var actualResult = _searchEngine.Search(SearchQuery3);
             var expectedResult = new List<IDocument>()
             {

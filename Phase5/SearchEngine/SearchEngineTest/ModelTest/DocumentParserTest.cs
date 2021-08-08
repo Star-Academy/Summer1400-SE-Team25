@@ -7,9 +7,9 @@ namespace SearchLibTest.ModelTest
 {
     public class DocumentParserTest
     {
-        private const string ValidDocumentPath = "EnglishData/57110";
-        private const string InvalidDocumentPath = "EnglishData/100";
-        private const int ValidDocumentWordsCount = 201;
+        private readonly string ValidDocumentPath = "EnglishData/57110";
+        private readonly string InvalidDocumentPath = "EnglishData/100";
+        private readonly int ValidDocumentWordsCount = 201;
         private IDocumentParser _documentMapper;
         private IInvertedIndex _invertedIndex;
         private IDocument _validDocument;

@@ -6,8 +6,8 @@ namespace SearchLib.Model
 {
     public class Document : IDocument
     {
-        private const int DocumentPreviewCharacterCount = 27;
-        private const string DocumentPreviewEndingString = "...";
+        private readonly int DocumentPreviewCharacterCount = 27;
+        private readonly string DocumentPreviewEndingString = "...";
         public string DocumentPath { get; }
         public string Name { get; set; }
 

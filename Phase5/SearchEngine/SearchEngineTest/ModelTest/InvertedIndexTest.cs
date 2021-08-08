@@ -19,7 +19,7 @@ namespace SearchLibTest.ModelTest
             Substitute.For<IDocument>()
         };
 
-        private const string Query = "query";
+        private readonly string Query = "query";
 
         [Fact]
         public void TestIndex1()
