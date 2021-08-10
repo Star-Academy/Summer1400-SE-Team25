@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using SearchEngine.Controller.DataBase;
 using SearchEngine.Model;
 using SearchEngine.Model.Entities;
 
@@ -6,22 +7,20 @@ namespace SearchEngine.Controller
 {
     public class SearchEngine : ISearchEngine
     {
-        private IInvertedIndex _index;
+        private IDbHandler _index;
         private List<IDocument> _documentsList;
+        private Context _context;
 
         public SearchEngine()
         {
-            _index = new InvertedIndex();
+            _index = new DbHandler();
             _documentsList = new List<IDocument>();
+            _context = new Context();
         }
 
         public void AddDirPath(string dirPath)
         {
-            var dirMapper = new DirectoryMapper();
-            var newDocuments = dirMapper.ExtractDocuments(dirPath);
-            var documentsHandler = new DocumentsHandler(new DocumentParser());
-            documentsHandler.AddDocumentsToIndex(_index, newDocuments);
-            _documentsList.AddRange(newDocuments);
+            throw new System.NotImplementedException();
         }
 
         public List<IDocument> Search(string searchQuery)

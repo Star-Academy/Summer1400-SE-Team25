@@ -4,8 +4,8 @@ using SearchEngine.Model.Entities;
 
 namespace SearchEngine.Controller
 {
-    public interface IDirectoryMapper
+    public interface IDirectoryHandler
     {
-        public List<IDocument> ExtractDocuments(string directorName);
+        public void ExtractDocuments(string directoryName);
     }
 }

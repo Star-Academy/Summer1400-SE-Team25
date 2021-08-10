@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using SearchEngine.Controller.DataBase;
 using SearchEngine.Model;
 using SearchEngine.Model.Entities;
 using SearchLib.Model.Operator;
@@ -14,7 +15,7 @@ namespace SearchEngine.Controller
             MakeOperatorsList(searchQuery.Split(" "));
         }
 
-        public List<IDocument> OperateOnQuery(IInvertedIndex index)
+        public List<IDocument> OperateOnQuery(IDbHandler index)
         {
             var result = new List<IDocument>();
             foreach (var operation in _operatorsList)
