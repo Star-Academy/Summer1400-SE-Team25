@@ -45,12 +45,16 @@ namespace SearchEngine.Controller.DataBase
 
         public void AddWordOccurrence(IWord occurredWord, IDocument document)
         {
-            throw new System.NotImplementedException();
+            occurredWord.OccurredDocuments.Add(document);
+            _context.SaveChanges();
         }
 
-        public List<IDocument> GetWordOccurrences(string word)
+        public List<IDocument> GetWordOccurrences(string wordText)
         {
-            throw new System.NotImplementedException();
+            return _context.Words
+                .Where(word => word.WordText.Equals(wordText))
+                .Select(word => word.OccurredDocuments).ToList().First().ToList();
+
         }
     }
 }

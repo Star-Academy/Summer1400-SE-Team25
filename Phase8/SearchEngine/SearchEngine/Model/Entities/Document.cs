@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
 
@@ -8,6 +9,7 @@ namespace SearchEngine.Model.Entities
     {
         private const int DocumentPreviewCharacterCount = 27;
         private const string DocumentPreviewEndingString = "...";
+        [Key]
         public int DocumentId { get; set; }
         public string DocumentPath { get; }
         public string Name { get; set; }
