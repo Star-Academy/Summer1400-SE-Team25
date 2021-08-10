@@ -1,16 +1,22 @@
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using SearchEngine.Model;
 
 namespace SearchEngine.Controller
 {
-    public class DirectoryMapper
+    public class DirectoryMapper : IDirectoryMapper
     {
-        public List<Document> ExtractDocuments(string directorName)
+        public List<IDocument> ExtractDocuments(string directorName)
         {
             var fileNames = Directory.GetFiles(directorName);
-            return fileNames.Select(fileName => new Document(fileName)).Where(document => !IsHiddenFile(document)).ToList();
+            var currentDirectoryDocuments = new List<IDocument>();
+            foreach (var fileName in fileNames)
+            {
+                var document = new Document(fileName);
+                if (!IsHiddenFile(document)) // do not add hidden files
+                    currentDirectoryDocuments.Add(document);
+            }
+            return currentDirectoryDocuments;
             
         }
 
