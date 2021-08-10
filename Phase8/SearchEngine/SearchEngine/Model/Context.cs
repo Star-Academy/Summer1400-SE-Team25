@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace SearchEngine
+namespace SearchEngine.Model
 {
     public class Context : DbContext
     {

@@ -1,7 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 
-namespace SearchEngine
+namespace SearchEngine.Model
 {
     public class Word
     {

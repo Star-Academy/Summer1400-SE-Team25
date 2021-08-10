@@ -1,6 +1,4 @@
-using System.IO;
-
-namespace SearchEngine
+namespace SearchEngine.Model
 {
     public class Document
     {
