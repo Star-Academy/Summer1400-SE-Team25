@@ -6,8 +6,8 @@ namespace SearchEngine.Controller
 {
     public class DirectoryHandler : IDirectoryHandler
     {
-        private IDbHandler _dbHandler;
-        private IDocumentParser _documentParser;
+        private readonly IDbHandler _dbHandler;
+        private readonly IDocumentParser _documentParser;
 
         public DirectoryHandler(IDbHandler dbHandler, IDocumentParser documentParser)
         {

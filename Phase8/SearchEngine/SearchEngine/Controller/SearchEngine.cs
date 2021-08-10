@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using SearchEngine.Controller.DataBase;
 using SearchEngine.Model;
 using SearchEngine.Model.Entities;
@@ -7,14 +8,24 @@ namespace SearchEngine.Controller
 {
     public class SearchEngine : ISearchEngine
     {
-        public void AddDirPath(string dirPath)
+        private readonly IDbHandler _dbHandler;
+        private readonly IDirectoryHandler _directoryHandler;
+
+        public SearchEngine()
         {
-            throw new System.NotImplementedException();
+            _dbHandler = new DbHandler(new Context());
+            _directoryHandler = new DirectoryHandler(_dbHandler, new DocumentParser());
+        }
+
+        public void AddDirPath(string directoryPath)
+        {
+            _directoryHandler.ExtractDocuments(directoryPath);
         }
 
         public List<IDocument> Search(string searchQuery)
         {
-            throw new System.NotImplementedException();
+            var queryHandler = new QueryHandler(searchQuery);
+            return queryHandler.OperateOnQuery(_dbHandler);
         }
     }
 }
