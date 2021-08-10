@@ -1,14 +1,16 @@
+using System.IO;
+
 namespace SearchEngine.Model
 {
     public class Document
     {
         private readonly string _documentDirectory;
-        public string FileName { get; set; }
+        public string Name { get; set; }
 
-        public Document(string documentDirectory, string fileName)
+        public Document(string documentDirectory)
         {
             _documentDirectory = documentDirectory;
-            FileName = fileName;
+            Name = Path.GetFileName(documentDirectory);
         }
     }
 }
