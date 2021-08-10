@@ -33,7 +33,7 @@ namespace SearchEngine.Model.Entities
                    "\t" + GetDocumentPreview();
         }
 
-        public override bool Equals(object? obj)
+        public override bool Equals(object obj)
         {
             if (!(obj is IDocument document))
                 return false;

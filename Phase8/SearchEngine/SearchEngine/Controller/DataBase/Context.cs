@@ -9,7 +9,8 @@ namespace SearchEngine.Controller.DataBase
         public DbSet<Word> Words;
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=.;Database=EfCoreExample;Trusted_Connection=False;" +
+            base.OnConfiguring(optionsBuilder);
+            optionsBuilder.UseSqlServer("Server=.;Database=SearchEngine;Trusted_Connection=False;" +
                                         "User=sa;Password=MyPass@word;");
         }
     }

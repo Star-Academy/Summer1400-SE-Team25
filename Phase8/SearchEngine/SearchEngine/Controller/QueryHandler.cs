@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using SearchEngine.Controller.DataBase;
 using SearchEngine.Model;
 using SearchEngine.Model.Entities;
@@ -11,21 +12,19 @@ namespace SearchEngine.Controller
         private readonly List<IOperator> _operatorsList;
         public QueryHandler(string searchQuery)
         {
-            this._operatorsList = new List<IOperator>();
+            _operatorsList = new List<IOperator>();
             MakeOperatorsList(searchQuery.Split(" "));
         }
 
-        public List<IDocument> OperateOnQuery(IDbHandler index)
+        public List<IDocument> OperateOnQuery(IDbHandler dbHandler)
         {
             var result = new List<IDocument>();
-            foreach (var operation in _operatorsList)
-                result = operation.Operate(index, result);
-            return result;
+            return _operatorsList.Aggregate(result, (current, operation) => operation.Operate(dbHandler, current));
         }
 
-        private void MakeOperatorsList(string[] searchQuery)
+        private void MakeOperatorsList(IEnumerable<string> searchQuery)
         {
-            foreach (string query in searchQuery)
+            foreach (var query in searchQuery)
             {
                 switch (query[0])
                 {

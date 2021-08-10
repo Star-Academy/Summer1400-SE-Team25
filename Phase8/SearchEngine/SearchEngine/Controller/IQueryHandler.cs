@@ -7,6 +7,6 @@ namespace SearchEngine.Controller
 {
     public interface IQueryHandler
     {
-        List<IDocument> OperateOnQuery(IDbHandler index);
+        List<IDocument> OperateOnQuery(IDbHandler dbHandler);
     }
 }
