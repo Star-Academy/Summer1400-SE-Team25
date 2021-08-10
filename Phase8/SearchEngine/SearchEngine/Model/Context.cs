@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using SearchEngine.Model.Entities;
 
 namespace SearchEngine.Model
 {

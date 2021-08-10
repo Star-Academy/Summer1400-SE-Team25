@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using SearchEngine.Model;
+using SearchEngine.Model.Entities;
 
 namespace SearchLib.Model.Operator
 {

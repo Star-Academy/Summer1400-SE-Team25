@@ -1,9 +1,8 @@
 using System;
 using System.IO;
 using System.Linq;
-using SearchLib.Model;
 
-namespace SearchEngine.Model
+namespace SearchEngine.Model.Entities
 {
     public class Document : IDocument
     {

@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using SearchEngine.Model.Entities;
 using SearchLib.Model;
 
 namespace SearchEngine.Model

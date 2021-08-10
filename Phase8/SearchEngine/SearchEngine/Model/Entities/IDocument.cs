@@ -1,4 +1,4 @@
-namespace SearchEngine.Model
+namespace SearchEngine.Model.Entities
 {
     public interface IDocument
     {

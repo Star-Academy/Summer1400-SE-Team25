@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using SearchEngine.Model.Entities;
 
 namespace SearchEngine.Model
 {

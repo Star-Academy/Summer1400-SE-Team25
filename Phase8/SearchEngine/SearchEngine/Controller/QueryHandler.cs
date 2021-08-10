@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using SearchEngine.Model;
+using SearchEngine.Model.Entities;
 using SearchLib.Model.Operator;
 
 namespace SearchEngine.Controller
