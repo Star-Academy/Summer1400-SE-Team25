@@ -1,25 +1,46 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using SearchEngine.Model.Entities;
 
 namespace SearchEngine.Controller.DataBase
 {
     public class DbHandler : IDbHandler
     {
-        private readonly Dictionary<string, List<IDocument>> _index;
+        private readonly Context _context;
 
-        public DbHandler()
+        public DbHandler(Context context)
         {
-            _index = new Dictionary<string, List<IDocument>>();
+            _context = context;
         }
 
         public Document GetDocumentByDirectory(string documentDirectory)
         {
-            throw new System.NotImplementedException();
+            var resultSet = _context.Documents.Where(document => document.DocumentPath.Equals(documentDirectory)).ToList();
+            if (resultSet.Count > 0)
+                return resultSet[0];
+            var newDocument = new Document(documentDirectory);
+            AddDocumentToDb(newDocument);
+            return newDocument;
+        }
+
+        private void AddDocumentToDb(IDocument document)
+        {
+            _context.Add(document);
         }
 
         public Word GetWordByText(string wordText)
         {
-            throw new System.NotImplementedException();
+            var resultSet = _context.Words.Where(word => word.WordText.Equals(wordText)).ToList();
+            if (resultSet.Count > 0)
+                return resultSet[0];
+            var newWord = new Word(wordText);
+            AddWordToDb(newWord);
+            return newWord;
+        }
+
+        private void AddWordToDb(IWord word)
+        {
+            _context.Add(word);
         }
 
         public void AddWordOccurrence(IWord occurredWord, IDocument document)
