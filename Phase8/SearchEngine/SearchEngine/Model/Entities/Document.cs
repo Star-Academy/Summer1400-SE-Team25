@@ -14,6 +14,10 @@ namespace SearchEngine.Model.Entities
         public string DocumentPath { get; }
         public string Name { get; set; }
 
+        public Document()
+        {
+        }
+
         public Document(string documentPath)
         {
             DocumentPath = documentPath;

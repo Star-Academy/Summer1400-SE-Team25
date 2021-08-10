@@ -5,8 +5,8 @@ namespace SearchEngine.Controller.DataBase
 {
     public class Context : DbContext
     {
-        public DbSet<Document> Documents;
-        public DbSet<Word> Words;
+        public DbSet<Document> Documents { get; set; }
+        public DbSet<Word> Words { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);

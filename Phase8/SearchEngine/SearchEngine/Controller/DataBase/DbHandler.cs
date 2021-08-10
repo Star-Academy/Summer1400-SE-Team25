@@ -15,7 +15,7 @@ namespace SearchEngine.Controller.DataBase
 
         public Document GetDocumentByDirectory(string documentDirectory)
         {
-            var resultSet = _context.Documents.Where(document => document.DocumentPath.Equals(documentDirectory)).ToList();
+            var resultSet = _context.Documents.Where(document => document.DocumentPath == documentDirectory).ToList();
             if (resultSet.Count > 0)
                 return resultSet[0];
             var newDocument = new Document(documentDirectory);
@@ -30,7 +30,7 @@ namespace SearchEngine.Controller.DataBase
 
         public Word GetWordByText(string wordText)
         {
-            var resultSet = _context.Words.Where(word => word.WordText.Equals(wordText)).ToList();
+            var resultSet = _context.Words.Where(word => word.WordText == wordText).ToList();
             if (resultSet.Count > 0)
                 return resultSet[0];
             var newWord = new Word(wordText);
