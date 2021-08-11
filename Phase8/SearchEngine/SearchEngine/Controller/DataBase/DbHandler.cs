@@ -54,8 +54,8 @@ namespace SearchEngine.Controller.DataBase
 
         public List<Document> GetWordOccurrences(string wordText)
         {
-            return _context.Words.Find(wordText).OccurredDocuments;
-
+            var resultList = _context.Words.Find(wordText);
+            return resultList == null ? new List<Document>() : resultList.OccurredDocuments;
         }
     }
 }
