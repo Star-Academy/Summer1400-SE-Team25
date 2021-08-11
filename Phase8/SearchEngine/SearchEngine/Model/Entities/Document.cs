@@ -10,6 +10,7 @@ namespace SearchEngine.Model.Entities
         private const int DocumentPreviewCharacterCount = 27;
         private const string DocumentPreviewEndingString = "...";
 
+        public int Id { get; set; }
         public string Name { get; set; }
         public string DocumentPath { get; set; }
 

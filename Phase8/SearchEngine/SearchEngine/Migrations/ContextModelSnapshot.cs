@@ -20,8 +20,13 @@ namespace SearchEngine.Migrations
 
             modelBuilder.Entity("SearchEngine.Model.Entities.Document", b =>
                 {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
                     b.Property<string>("DocumentPath")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -29,7 +34,7 @@ namespace SearchEngine.Migrations
                     b.Property<string>("WordText")
                         .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("DocumentPath");
+                    b.HasKey("Id");
 
                     b.HasIndex("WordText");
 

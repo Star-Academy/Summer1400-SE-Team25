@@ -48,7 +48,7 @@ namespace SearchEngine.Controller.DataBase
 
         public void AddWordOccurrence(Word occurredWord, Document document)
         {
-            occurredWord.OccurredDocuments.Add(document);
+            _context.Words.Find(occurredWord.WordText).OccurredDocuments.Add(document);
             _context.SaveChanges();
         }
 

@@ -21,10 +21,13 @@ namespace SearchEngine.Controller
             foreach (var file in directoryFiles)
             {
                 var newDocument = new Document(file);
+
                 if (!_dbHandler.DBContains(newDocument))
-                    _documentParser.AddDocumentWordsToDb(_dbHandler, newDocument);
+                    _dbHandler.AddDocumentToDb(newDocument);
+
+                _documentParser.AddDocumentWordsToDb(_dbHandler, newDocument);
             }
-            
+
         }
     }
 }

@@ -31,7 +31,7 @@ namespace SearchEngine.Controller.DataBase
         private void ConfigureDocuments(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Document>().
-                HasKey(d => d.DocumentPath);
+                HasKey(d => d.Id);
         }
     }
 }
