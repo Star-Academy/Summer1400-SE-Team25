@@ -6,6 +6,7 @@ namespace SearchEngine.Model.Entities
         string DocumentPath { get; }
         string Name { get; set; }
 
+
         string GetDocumentPreview();
 
         string ToString();

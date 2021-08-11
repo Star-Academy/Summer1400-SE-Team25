@@ -8,6 +8,6 @@ namespace SearchEngine.Controller
     {
         void AddDirPath(string dirPath);
 
-        List<IDocument> Search(string searchQuery);
+        List<Document> Search(string searchQuery);
     }
 }

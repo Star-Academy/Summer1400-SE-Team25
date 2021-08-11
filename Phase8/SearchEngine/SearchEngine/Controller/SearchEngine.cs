@@ -22,7 +22,7 @@ namespace SearchEngine.Controller
             _directoryHandler.ExtractDocuments(directoryPath);
         }
 
-        public List<IDocument> Search(string searchQuery)
+        public List<Document> Search(string searchQuery)
         {
             var queryHandler = new QueryHandler(searchQuery);
             return queryHandler.OperateOnQuery(_dbHandler);

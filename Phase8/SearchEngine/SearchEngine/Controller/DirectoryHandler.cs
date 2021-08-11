@@ -17,11 +17,12 @@ namespace SearchEngine.Controller
 
         public void ExtractDocuments(string directoryName)
         {
-            var fileDirectories = Directory.GetFiles(directoryName);
-            foreach (var fileDirectory in fileDirectories)
+            var directoryFiles = Directory.GetFiles(directoryName);
+            foreach (var file in directoryFiles)
             {
-                var document = _dbHandler.GetDocumentByDirectory(fileDirectory);
-                _documentParser.AddDocumentWordsToDb(_dbHandler, document);
+                var newDocument = new Document(file);
+                if (!_dbHandler.DBContains(newDocument))
+                    _documentParser.AddDocumentWordsToDb(_dbHandler, newDocument);
             }
             
         }

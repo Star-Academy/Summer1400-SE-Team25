@@ -13,47 +13,48 @@ namespace SearchEngine.Controller.DataBase
             _context = context;
         }
 
-        public Document GetDocumentByDirectory(string documentDirectory)
+        public Document GetDocumentByPath(string documentPath)
         {
-            var resultSet = _context.Documents.Where(document => document.DocumentPath == documentDirectory).ToList();
-            if (resultSet.Count > 0)
-                return resultSet[0];
-            var newDocument = new Document(documentDirectory);
-            AddDocumentToDb(newDocument);
-            return newDocument;
+            return _context.Documents.Find(documentPath);
+
         }
 
-        private void AddDocumentToDb(IDocument document)
+        public void AddDocumentToDb(Document document)
         {
-            _context.Add(document);
+            _context.Documents.Add(document);
+            _context.SaveChanges();
+        }
+
+        public bool DBContains(Document document)
+        {
+            return _context.Documents.Any(d => d.DocumentPath == document.DocumentPath);
         }
 
         public Word GetWordByText(string wordText)
         {
-            var resultSet = _context.Words.Where(word => word.WordText == wordText).ToList();
-            if (resultSet.Count > 0)
-                return resultSet[0];
-            var newWord = new Word(wordText);
-            AddWordToDb(newWord);
-            return newWord;
+            return _context.Words.Find(wordText);
         }
 
-        private void AddWordToDb(IWord word)
+        public void AddWordToDb(Word word)
         {
-            _context.Add(word);
+            _context.Words.Add(word);
+            _context.SaveChanges();
         }
 
-        public void AddWordOccurrence(IWord occurredWord, IDocument document)
+        public bool DBContains(Word word)
+        {
+            return _context.Words.Any(w => w.WordText == word.WordText);
+        }
+
+        public void AddWordOccurrence(Word occurredWord, Document document)
         {
             occurredWord.OccurredDocuments.Add(document);
             _context.SaveChanges();
         }
 
-        public List<IDocument> GetWordOccurrences(string wordText)
+        public List<Document> GetWordOccurrences(string wordText)
         {
-            return _context.Words
-                .Where(word => word.WordText.Equals(wordText))
-                .Select(word => word.OccurredDocuments).ToList().First().ToList();
+            return _context.Words.Find(wordText).OccurredDocuments;
 
         }
     }

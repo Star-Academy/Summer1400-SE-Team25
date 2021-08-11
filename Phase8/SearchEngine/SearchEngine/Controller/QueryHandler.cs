@@ -16,10 +16,11 @@ namespace SearchEngine.Controller
             MakeOperatorsList(searchQuery.Split(" "));
         }
 
-        public List<IDocument> OperateOnQuery(IDbHandler dbHandler)
+        public List<Document> OperateOnQuery(IDbHandler dbHandler)
         {
-            var result = new List<IDocument>();
-            return _operatorsList.Aggregate(result, (current, operation) => operation.Operate(dbHandler, current));
+            var result = new List<Document>();
+            return _operatorsList.
+                Aggregate(result, (current, operation) => operation.Operate(dbHandler, current));
         }
 
         private void MakeOperatorsList(IEnumerable<string> searchQuery)

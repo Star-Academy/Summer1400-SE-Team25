@@ -17,7 +17,7 @@ namespace SearchLib.Model.Operator
             this.Query = query;
         }
 
-        public List<IDocument> Operate(IDbHandler index, List<IDocument> currentResult)
+        public List<Document> Operate(IDbHandler index, List<Document> currentResult)
         {
             var searchResult = index.GetWordOccurrences(Query);
             currentResult.RemoveAll(x => searchResult.Contains(x));

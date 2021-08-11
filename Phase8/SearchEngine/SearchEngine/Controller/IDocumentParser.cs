@@ -5,6 +5,6 @@ namespace SearchEngine.Controller
 {
     public interface IDocumentParser
     {
-        void AddDocumentWordsToDb(IDbHandler idbHandler, IDocument document);
+        void AddDocumentWordsToDb(IDbHandler dbHandler, Document document);
     }
 }

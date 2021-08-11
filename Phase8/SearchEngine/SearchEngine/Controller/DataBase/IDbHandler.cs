@@ -5,12 +5,20 @@ namespace SearchEngine.Controller.DataBase
 {
     public interface IDbHandler
     {
-        Document GetDocumentByDirectory(string documentDirectory);
+        Document GetDocumentByPath(string documentPath);
+
+        void AddDocumentToDb(Document document);
+
+        bool DBContains(Document document);
 
         Word GetWordByText(string wordText);
 
-        void AddWordOccurrence(IWord occurredWord, IDocument document);
+        void AddWordToDb(Word word);
 
-        List<IDocument> GetWordOccurrences(string word);
+        void AddWordOccurrence(Word occurredWord, Document document);
+
+        public bool DBContains(Word word);
+
+        List<Document> GetWordOccurrences(string word);
     }
 }

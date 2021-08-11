@@ -6,15 +6,13 @@ namespace SearchEngine.Model.Entities
 {
     public class Word : IWord
     {
-        [Key]
-        public int WordId { get; set; }
         public string WordText { get; set; }
-        public IList<IDocument> OccurredDocuments { get; }
+        public List<Document> OccurredDocuments { get; set; }
 
         public Word(string wordText)
         {
             WordText = wordText;
-            OccurredDocuments = new List<IDocument>();
+            OccurredDocuments = new List<Document>();
         }
     }
 }

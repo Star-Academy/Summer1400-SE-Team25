@@ -9,6 +9,6 @@ namespace SearchLib.Model.Operator
 {
     public interface IOperator
     {
-        List<IDocument> Operate(IDbHandler index, List<IDocument> currentResult);
+        List<Document> Operate(IDbHandler index, List<Document> currentResult);
     }
 }

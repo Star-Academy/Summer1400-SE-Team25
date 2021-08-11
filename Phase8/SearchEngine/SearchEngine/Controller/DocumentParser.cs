@@ -7,7 +7,7 @@ namespace SearchEngine.Controller
 {
     public class DocumentParser : IDocumentParser
     {
-        public void AddDocumentWordsToDb(IDbHandler idbHandler, IDocument document)
+        public void AddDocumentWordsToDb(IDbHandler dbHandler, Document document)
         {
             using var fileReader = new StreamReader(document.DocumentPath);
             while (!fileReader.EndOfStream)
@@ -16,8 +16,12 @@ namespace SearchEngine.Controller
                 if (wordsText == null) continue;
                 foreach (var wordText in wordsText)
                 {
-                    var wordObject = idbHandler.GetWordByText(wordText);
-                    idbHandler.AddWordOccurrence(wordObject, document);
+                    var newWord = new Word(wordText);
+
+                    if (!dbHandler.DBContains(newWord))
+                        dbHandler.AddWordToDb(newWord);
+
+                    dbHandler.AddWordOccurrence(newWord, document);
                 }
             }
         }
