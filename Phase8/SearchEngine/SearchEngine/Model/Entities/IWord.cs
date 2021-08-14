@@ -4,7 +4,8 @@ namespace SearchEngine.Model.Entities
 {
     public interface IWord
     {
+        public int Id { get; set; }
         public string WordText { get; set; }
-        public List<Document> OccurredDocuments { get; }
+        public List<WordDocument> WordDocuments { get; }
     }
 }

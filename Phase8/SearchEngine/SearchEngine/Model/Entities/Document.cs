@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace SearchEngine.Model.Entities
         public int Id { get; set; }
         public string Name { get; set; }
         public string DocumentPath { get; set; }
+        public List<WordDocument> WordDocuments { get; set; }
 
         public Document()
         {
@@ -22,6 +24,7 @@ namespace SearchEngine.Model.Entities
         {
             DocumentPath = documentPath;
             Name = Path.GetFileName(documentPath);
+            WordDocuments = new List<WordDocument>();
         }
 
         public string GetDocumentPreview()

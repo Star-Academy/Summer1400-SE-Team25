@@ -48,14 +48,20 @@ namespace SearchEngine.Controller.DataBase
 
         public void AddWordOccurrence(Word occurredWord, Document document)
         {
-            _context.Words.Find(occurredWord.WordText).OccurredDocuments.Add(document);
+            _context.WordDocuments.Add(new WordDocument(occurredWord, document));
             _context.SaveChanges();
         }
 
         public List<Document> GetWordOccurrences(string wordText)
         {
-            var resultList = _context.Words.Find(wordText);
-            return resultList == null ? new List<Document>() : resultList.OccurredDocuments;
+            var foundWord = (from word in _context.Words
+                              where word.WordText == wordText
+                              select word).FirstOrDefault();
+            if (foundWord == null)
+                return new List<Document>();
+            else
+                return (from wordDocument in foundWord.WordDocuments 
+                        select wordDocument.Document).ToList();
         }
     }
 }
