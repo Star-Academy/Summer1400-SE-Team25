@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using SearchEngine.Controller.DataBase;
 using SearchEngine.Model.Entities;
@@ -20,14 +21,22 @@ namespace SearchEngine.Controller
             var directoryFiles = Directory.GetFiles(directoryName);
             foreach (var file in directoryFiles)
             {
+                if (IsFileHidden(file))
+                    continue;
+
                 var newDocument = new Document(file);
-
-                if (!_dbHandler.DBContains(newDocument))
-                    _dbHandler.AddDocumentToDb(newDocument);
-
+                if (_dbHandler.DBContains(newDocument))
+                    continue;
+                _dbHandler.AddDocumentToDb(newDocument);
+                newDocument = _dbHandler.GetDocumentByPath(file);
                 _documentParser.AddDocumentWordsToDb(_dbHandler, newDocument);
             }
 
+        }
+
+        private bool IsFileHidden(string filePath)
+        {
+            return Path.GetFileName(filePath)[0] == '.';
         }
     }
 }

@@ -12,7 +12,8 @@ namespace SearchEngine.Controller.DataBase
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseSqlServer("Server=localhost;Database=SearchEngine;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer("Server=.;Database=SearchEngine;Trusted_Connection=False;" +
+                                        "User=sa;Password=MyPass@word;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

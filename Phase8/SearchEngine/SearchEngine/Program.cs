@@ -9,6 +9,7 @@ namespace SearchEngine
         static void Main(string[] args)
         {
             var context = new Context();
+            context.Database.EnsureCreated();
             var dbHandler = new DbHandler(context);
             var searchEngine = new Controller.SearchEngine(dbHandler);
             searchEngine.AddDirPath(EnglishDataPath);

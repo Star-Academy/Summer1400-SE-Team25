@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using SearchEngine.Controller.DataBase;
 using SearchEngine.Model;
 using SearchEngine.Model.Entities;
@@ -17,11 +18,11 @@ namespace SearchEngine.Controller
                 foreach (var wordText in wordsText)
                 {
                     var newWord = new Word(wordText);
-
                     if (!dbHandler.DBContains(newWord))
                         dbHandler.AddWordToDb(newWord);
-
-                    dbHandler.AddWordOccurrence(newWord, document);
+                    newWord = dbHandler.GetWordByText(wordText);
+                    if (!dbHandler.DBContains(newWord, document))
+                        dbHandler.AddWordOccurrence(newWord, document);
                 }
             }
         }

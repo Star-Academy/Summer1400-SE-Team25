@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace SearchEngine.Model.Entities
 {
-    public class Document : IDocument
+    public class Document
     {
         private const int DocumentPreviewCharacterCount = 27;
         private const string DocumentPreviewEndingString = "...";
@@ -14,11 +14,7 @@ namespace SearchEngine.Model.Entities
         public int Id { get; set; }
         public string Name { get; set; }
         public string DocumentPath { get; set; }
-        public List<WordDocument> WordDocuments { get; set; }
-
-        public Document()
-        {
-        }
+        public ICollection<WordDocument> WordDocuments { get; set; }
 
         public Document(string documentPath)
         {
@@ -42,7 +38,7 @@ namespace SearchEngine.Model.Entities
 
         public override bool Equals(object obj)
         {
-            if (!(obj is IDocument document))
+            if (!(obj is Document document))
                 return false;
             return DocumentPath.Equals(document.DocumentPath);
         }

@@ -4,11 +4,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SearchEngine.Model.Entities
 {
-    public class Word : IWord
+    public class Word
     {
         public int Id { get; set; }
         public string WordText { get; set; }
-        public List<WordDocument> WordDocuments { get; set; }
+        public ICollection<WordDocument> WordDocuments { get; set; }
 
         public Word(string wordText)
         {

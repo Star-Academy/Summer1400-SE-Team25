@@ -11,13 +11,15 @@ namespace SearchEngine.Controller.DataBase
 
         bool DBContains(Document document);
 
+        public bool DBContains(Word word);
+
+        public bool DBContains(Word word, Document document);
+
         Word GetWordByText(string wordText);
 
         void AddWordToDb(Word word);
 
         void AddWordOccurrence(Word occurredWord, Document document);
-
-        public bool DBContains(Word word);
 
         List<Document> GetWordOccurrences(string word);
     }

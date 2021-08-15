@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using SearchEngine.Model.Entities;
 
@@ -15,14 +17,17 @@ namespace SearchEngine.Controller.DataBase
 
         public Document GetDocumentByPath(string documentPath)
         {
-            return _context.Documents.Find(documentPath);
+            return _context.Documents
+                .Include(d => d.WordDocuments)
+                .FirstOrDefault(d => d.DocumentPath == documentPath);
 
         }
 
-        public void AddDocumentToDb(Document document)
+        public Word GetWordByText(string wordText)
         {
-            _context.Documents.Add(document);
-            _context.SaveChanges();
+            return _context.Words
+                .Include(w => w.WordDocuments)
+                .FirstOrDefault(w => w.WordText == wordText);
         }
 
         public bool DBContains(Document document)
@@ -30,38 +35,49 @@ namespace SearchEngine.Controller.DataBase
             return _context.Documents.Any(d => d.DocumentPath == document.DocumentPath);
         }
 
-        public Word GetWordByText(string wordText)
-        {
-            return _context.Words.Find(wordText);
-        }
-
-        public void AddWordToDb(Word word)
-        {
-            _context.Words.Add(word);
-            _context.SaveChanges();
-        }
-
         public bool DBContains(Word word)
         {
             return _context.Words.Any(w => w.WordText == word.WordText);
         }
 
+        public bool DBContains(Word word, Document document)
+        {
+            return _context.WordDocuments.Any(wd =>
+                wd.DocumentId == document.Id &&
+                wd.WordId == word.Id);
+        }
+
+        public void AddDocumentToDb(Document document)
+        {
+            _context.Add(document);
+            _context.SaveChanges();
+        }
+
+        public void AddWordToDb(Word word)
+        {
+            _context.Add(word);
+            _context.SaveChanges();
+        }
+
         public void AddWordOccurrence(Word occurredWord, Document document)
         {
-            _context.WordDocuments.Add(new WordDocument(occurredWord, document));
+            var newWordDocument = new WordDocument(occurredWord, document);
+            _context.Add(newWordDocument);
+            occurredWord.WordDocuments.Add(newWordDocument);
+            document.WordDocuments.Add(newWordDocument);
+            _context.Update(occurredWord);
+            _context.Update(document);
             _context.SaveChanges();
         }
 
         public List<Document> GetWordOccurrences(string wordText)
         {
-            var foundWord = (from word in _context.Words
-                              where word.WordText == wordText
-                              select word).FirstOrDefault();
+            var foundWord = GetWordByText(wordText);
             if (foundWord == null)
                 return new List<Document>();
-            else
-                return (from wordDocument in foundWord.WordDocuments 
-                        select wordDocument.Document).ToList();
+            return (from wordDocument in _context.WordDocuments
+                where wordDocument.WordId == foundWord.Id
+                select wordDocument.Document).ToList();
         }
     }
 }
