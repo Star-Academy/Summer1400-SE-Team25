@@ -3,7 +3,10 @@ package controllerTest;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Set;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -35,6 +38,22 @@ public class QueryHandlerTest {
 
     @Before
     public void setUp() {
+        initializeDocuments();
+        when(wordUtil.extractRootWord("Test_query1")).thenReturn("test_query1");
+        when(wordUtil.extractRootWord("Test_query2")).thenReturn("test_query2");
+        when(wordUtil.extractRootWord("Test_query3")).thenReturn("test_query3");
+        this.queryHandler = new QueryHandler(index);
+    }
+
+    private void initializeDocuments() {
+        var documentsList = getDocumentsList();
+        when(index.getOccurredDocuments("test_query1")).thenReturn(documentsList.get(0));
+        when(index.getOccurredDocuments("test_query2")).thenReturn(documentsList.get(1));
+        when(index.getOccurredDocuments("test_query3")).thenReturn(documentsList.get(2));
+        when(index.getDocuments()).thenReturn(documentsList.get(3));
+    }
+
+    private ArrayList<Set<DocumentFile>> getDocumentsList() {
         var searchResult1 = new HashSet<DocumentFile>() {
             {
                 add(document1);
@@ -62,15 +81,7 @@ public class QueryHandlerTest {
                 add(document4);
             }
         };
-
-        when(index.getOccurredDocuments("test_query1")).thenReturn(searchResult1);
-        when(index.getOccurredDocuments("test_query2")).thenReturn(searchResult2);
-        when(index.getOccurredDocuments("test_query3")).thenReturn(searchResult3);
-        when(index.getDocuments()).thenReturn(documentsSet);
-        when(wordUtil.extractRootWord("Test_query1")).thenReturn("test_query1");
-        when(wordUtil.extractRootWord("Test_query2")).thenReturn("test_query2");
-        when(wordUtil.extractRootWord("Test_query3")).thenReturn("test_query3");
-        this.queryHandler = new QueryHandler(index);
+        return new ArrayList<>(Arrays.asList(searchResult1, searchResult2, searchResult3, documentsSet));
     }
 
     @Test

@@ -27,26 +27,26 @@ public class DocumentFileTest {
 
     @Test
     public void testException() {
-        DocumentFile invalidDocument = new DocumentFile(FIRST_DOCUMENT_NAME, INVALID_DOCUMENT_PATH, FIRST_DOCUMENT_ID);
-        invalidDocument.previewDocument();
+        var invalidDocument = new DocumentFile(FIRST_DOCUMENT_NAME, INVALID_DOCUMENT_PATH, FIRST_DOCUMENT_ID);
+        invalidDocument.getPreviewDocument();
     }
 
     @Test
     public void testDocumentPreview() {
-        String documentPreview = firstDocumentFile.previewDocument();
+        var documentPreview = firstDocumentFile.getPreviewDocument();
         assertEquals(FIRST_DOCUMENT_PREVIEW, documentPreview);
     }
 
     @Test
     public void testToString() {
-        String documentToString = firstDocumentFile.toString();
-        String firstDocumentToString = FIRST_DOCUMENT_NAME + ":\n\t" + FIRST_DOCUMENT_PREVIEW + "\n";
+        var documentToString = firstDocumentFile.toString();
+        var firstDocumentToString = FIRST_DOCUMENT_NAME + ":\n\t" + FIRST_DOCUMENT_PREVIEW + "\n";
         assertEquals(documentToString, firstDocumentToString);
     }
 
     @Test
     public void equalsTest() {
-        Object object = new Object();
+        var object = new Object();
         assertEquals(firstDocumentFile, firstDocumentFile);
         assertNotEquals(firstDocumentFile, secondDocumentFile);
         assertNotEquals(firstDocumentFile, object);

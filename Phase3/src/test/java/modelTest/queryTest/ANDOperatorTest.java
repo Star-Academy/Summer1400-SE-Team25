@@ -49,8 +49,7 @@ public class ANDOperatorTest {
         previewSearchResult.add(documentFile);
         previewSearchResult.add(additionalDocumentFile);
         var result = andOperator.operate(previewSearchResult, wordUtil);
-        assertTrue(result.contains(documentFile));
-        assertFalse(result.contains(additionalDocumentFile));
+        assertion_JustContainFirstDocument(result);
     }
 
     @Test
@@ -58,6 +57,10 @@ public class ANDOperatorTest {
         initializePreviewResult();
         previewSearchResult.add(documentFile);
         var result = andOperator.operate(previewSearchResult, wordUtil);
+        assertion_JustContainFirstDocument(result);
+    }
+
+    private void assertion_JustContainFirstDocument(Set<DocumentFile> result) {
         assertTrue(result.contains(documentFile));
         assertFalse(result.contains(additionalDocumentFile));
     }

@@ -1,31 +1,27 @@
 package controller;
 
+import model.FileMapper;
+import model.InvertedIndex;
+
 import java.io.File;
 import java.io.IOException;
-import java.util.Objects;
 import java.util.Scanner;
 
-import model.FileMapper;
-
 public class FileHandler {
-    private final FileMapper fileMapper;
+    private FileMapper fileMapper;
+    private InvertedIndex invertedIndex;
 
-    public FileHandler(FileMapper mapper){
-        this.fileMapper = mapper;
+    public FileHandler(FileMapper fileMapper, InvertedIndex invertedIndex) {
+        this.fileMapper = fileMapper;
+        this.invertedIndex = invertedIndex;
     }
 
-    public void initialize(String directoryName) {
-        var documentsFolder = new File(directoryName);
-        for (File file : Objects.requireNonNull(documentsFolder.listFiles()))
-            extractWords(file);
-    }
-
-    private void extractWords(File file) {
-        fileMapper.addDocument(file);
+    public void addWordsToInvertedIndex(File file) {
+        var documentFile = fileMapper.getCorrespondingDocument(file);
         try (Scanner fileScanner = new Scanner(file)) {
             while (fileScanner.hasNext()) {
-                String readWord = fileScanner.next();
-                fileMapper.addWordToInvertedIndex(file.getName(), readWord);
+                var readWord = fileScanner.next();
+                invertedIndex.addWord(documentFile, readWord);
             }
         } catch (IOException e) {
             e.printStackTrace();

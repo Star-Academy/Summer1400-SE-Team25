@@ -50,8 +50,7 @@ public class NOTOperatorTest {
         previewSearchResult.add(documentFile);
         previewSearchResult.add(additionalDocumentFile);
         var result = notOperator.operate(previewSearchResult, wordUtil);
-        assertFalse(result.contains(documentFile));
-        assertTrue(result.contains(additionalDocumentFile));
+        assertion_JustContainSecondDocument(result);
     }
 
     @Test
@@ -59,6 +58,10 @@ public class NOTOperatorTest {
         initializePreviewResult();
         previewSearchResult.add(additionalDocumentFile);
         var result = notOperator.operate(previewSearchResult, wordUtil);
+        assertion_JustContainSecondDocument(result);
+    }
+
+    private void assertion_JustContainSecondDocument(Set<DocumentFile> result) {
         assertFalse(result.contains(documentFile));
         assertTrue(result.contains(additionalDocumentFile));
     }

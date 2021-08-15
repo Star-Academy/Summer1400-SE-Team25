@@ -16,6 +16,7 @@ public class WordUtilTest {
     private final String WORD = "Friends";
     private final String ROOT_WORD = "friend";
     private final String STOP_WORD = "be";
+    private final String INVALID_STOP_WORDS_PATH = "src/main/java";
 
     public void initialize() {
         wordUtil = new WordUtil();
@@ -37,6 +38,6 @@ public class WordUtilTest {
 
     @Test
     public void testFileNotFoundException() {
-        wordUtil = new WordUtil("src/main/java/StopWord");
+        wordUtil = new WordUtil(INVALID_STOP_WORDS_PATH);
     }
 }

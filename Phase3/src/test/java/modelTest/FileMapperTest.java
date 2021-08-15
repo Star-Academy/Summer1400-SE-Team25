@@ -1,12 +1,17 @@
 package modelTest;
 
+import static org.mockito.Mockito.*;
+import static org.junit.Assert.*;
+
 import model.DocumentFile;
 import model.FileMapper;
 import model.InvertedIndex;
-import org.junit.*;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.io.File;
@@ -15,42 +20,32 @@ import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class FileMapperTest {
+    private final String VALID_DOCUMENT_PATH = "src/main/java/EnglishData/57110";
+    private final String DOCUMENT_PREVIEW = "I have a 42 yr old male fri...";
     private FileMapper fileMapper;
-    @Mock
-    private InvertedIndex invertedIndex;
-
-    private final String DOCUMENT_PATH = "src/main/java/EnglishData/57110";
-    private final String DOCUMENT_WORD = "friend";
     private File documentFile;
 
     @Before
-    public void initialize() {
-        doNothing().when(invertedIndex).addWord(any(DocumentFile.class), any(String.class));
-        doNothing().when(invertedIndex).addDocument(any(DocumentFile.class));
-        fileMapper = new FileMapper(invertedIndex);
+    public void initializeMocks() {
+        fileMapper = new FileMapper();
     }
 
     private void initializeFile() {
-        documentFile = new File(DOCUMENT_PATH);
-    }
-
-    @Test(expected = IllegalStateException.class)
-    public void testAddInvalidWord() {
-        initializeFile();
-        fileMapper.addWordToInvertedIndex(DOCUMENT_PATH, DOCUMENT_WORD);
+        documentFile = new File(VALID_DOCUMENT_PATH);
     }
 
     @Test
     public void testAddValidWord() {
         initializeFile();
-        fileMapper.addDocument(documentFile);
-        fileMapper.addWordToInvertedIndex(documentFile.getName(), DOCUMENT_WORD);
+        var receivedDocument = fileMapper.getCorrespondingDocument(documentFile);
+        assertEquals(receivedDocument.getPreviewDocument(), DOCUMENT_PREVIEW);
     }
 
     @Test
     public void testDocumentTwice() {
         initializeFile();
-        fileMapper.addDocument(documentFile);
-        fileMapper.addDocument(documentFile);
+        var receivedDocument1 = fileMapper.getCorrespondingDocument(documentFile);
+        var receivedDocument2 = fileMapper.getCorrespondingDocument(documentFile);
+        assertEquals(receivedDocument1, receivedDocument2);
     }
 }

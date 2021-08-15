@@ -51,8 +51,7 @@ public class OROperatorTest {
         previewSearchResult.add(documentFile);
         previewSearchResult.add(additionalDocumentFile);
         var result = orOperator.operate(previewSearchResult, wordUtil);
-        assertTrue(result.contains(documentFile));
-        assertTrue(result.contains(additionalDocumentFile));
+        assertion_ContainingBothDocuments(result);
     }
 
     @Test
@@ -60,6 +59,10 @@ public class OROperatorTest {
         initializePreviewResult();
         previewSearchResult.add(additionalDocumentFile);
         var result = orOperator.operate(previewSearchResult, wordUtil);
+        assertion_ContainingBothDocuments(result);
+    }
+
+    private void assertion_ContainingBothDocuments(Set<DocumentFile> result) {
         assertTrue(result.contains(documentFile));
         assertTrue(result.contains(additionalDocumentFile));
     }
