@@ -23,12 +23,14 @@ namespace StudentsGradeandAverage
 
         public void AssignGradesToStudents()
         {
-            foreach (var student in _students)
-            {
-                student.Grades = (from grade in _grades
-                                  where grade.StudentNumber == student.StudentNumber
-                                  select grade).ToList();
-            }
+            _students.ForEach(student => student.Grades = ExtractStudentsGrades(student.StudentNumber));
+        }
+
+        private List<Grade> ExtractStudentsGrades(int studentNumber)
+        {
+            return (from grade in _grades
+                    where grade.StudentNumber == studentNumber
+                    select grade).ToList();
         }
 
         public void SortStudentsByScore()

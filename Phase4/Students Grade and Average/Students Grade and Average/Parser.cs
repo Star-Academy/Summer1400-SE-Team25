@@ -9,35 +9,16 @@ namespace StudentsGradeandAverage
 {
     class Parser
     {
-        private List<Student> _students;
-        public List<Student> Students
-        {
-            get { return _students; }
-        }
+        public List<Student> Students { get; private set; }
 
-        private List<Grade> _grades;
-        public List<Grade> Grades
-        {
-            get { return _grades; }
-        }
+        public List<Grade> Grades { get; private set; }
 
-        private string studentsFilePath;
-        private string gradesFilePath;
-
-        public Parser(string studentsFilePath, string gradesFilePath)
+        public void Parse(StreamReader studentsFile, StreamReader gradesFile)
         {
-            this.studentsFilePath = studentsFilePath;
-            this.gradesFilePath = gradesFilePath;
-        }
-
-        public void Parse()
-        {
-            var studentsFile = new StreamReader(studentsFilePath);
-            _students =
+            Students =
                 JsonSerializer.Deserialize<List<Student>>(studentsFile.ReadToEnd());
             studentsFile.Close();
-            var gradesFile = new StreamReader(gradesFilePath);
-            _grades =
+            Grades =
                 JsonSerializer.Deserialize<List<Grade>>(gradesFile.ReadToEnd());
         }
     }
