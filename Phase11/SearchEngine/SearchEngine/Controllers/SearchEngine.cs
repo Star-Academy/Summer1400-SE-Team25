@@ -32,7 +32,6 @@ namespace SearchEngine.Controllers
         [Route("search/{searchQuery}")]
         public ActionResult<List<Document>> Search([FromRoute] string searchQuery)
         {
-            searchQuery = $"+{searchQuery}";
             var queryHandler = new QueryHandler(searchQuery);
             return queryHandler.OperateOnQuery(_dbHandler);
         }
