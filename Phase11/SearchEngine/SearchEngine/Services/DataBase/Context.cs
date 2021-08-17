@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using SearchEngine.Model.Entities;
 
-namespace SearchEngine.Controller.DataBase
+namespace SearchEngine.Services.DataBase
 {
     public class Context : DbContext
     {

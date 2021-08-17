@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using SearchEngine.Model.Entities;
 
-namespace SearchEngine.Controller.DataBase
+namespace SearchEngine.Services.DataBase
 {
     public interface IDbHandler
     {

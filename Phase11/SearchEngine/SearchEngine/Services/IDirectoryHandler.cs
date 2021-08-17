@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using SearchEngine.Model;
 using SearchEngine.Model.Entities;
 
-namespace SearchEngine.Controller
+namespace SearchEngine.Services
 {
     public interface IDirectoryHandler
     {

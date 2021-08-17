@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using SearchEngine.Controller;
-using SearchEngine.Controller.DataBase;
+using SearchEngine.Services;
+using SearchEngine.Services.DataBase;
 using SearchEngine.Model.Entities;
 
 namespace SearchEngine.Controllers

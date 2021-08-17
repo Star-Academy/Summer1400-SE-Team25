@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using SearchEngine.Controller.DataBase;
+using SearchEngine.Services.DataBase;
 using SearchEngine.Model;
 using SearchEngine.Model.Entities;
 

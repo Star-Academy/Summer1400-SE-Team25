@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using SearchEngine.Controller.DataBase;
+using SearchEngine.Services.DataBase;
 using SearchEngine.Model;
 using SearchEngine.Model.Entities;
 
-namespace SearchEngine.Controller
+namespace SearchEngine.Services
 {
     public interface IQueryHandler
     {

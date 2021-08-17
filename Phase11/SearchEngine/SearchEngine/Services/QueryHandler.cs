@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using SearchEngine.Controller.DataBase;
+using SearchEngine.Services.DataBase;
 using SearchEngine.Model;
 using SearchEngine.Model.Entities;
 using SearchLib.Model.Operator;
 
-namespace SearchEngine.Controller
+namespace SearchEngine.Services
 {
     public class QueryHandler : IQueryHandler
     {

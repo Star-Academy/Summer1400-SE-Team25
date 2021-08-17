@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using SearchEngine.Controller;
-using SearchEngine.Controller.DataBase;
+using SearchEngine.Services;
+using SearchEngine.Services.DataBase;
 
 namespace SearchEngine
 {

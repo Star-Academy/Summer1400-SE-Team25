@@ -1,10 +1,10 @@
 ﻿using System;
 using System.IO;
-using SearchEngine.Controller.DataBase;
+using SearchEngine.Services.DataBase;
 using SearchEngine.Model;
 using SearchEngine.Model.Entities;
 
-namespace SearchEngine.Controller
+namespace SearchEngine.Services
 {
     public class DocumentParser : IDocumentParser
     {

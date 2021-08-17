@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
-using SearchEngine.Controller.DataBase;
+using SearchEngine.Services.DataBase;
 using SearchEngine.Model;
 using SearchEngine.Model.Entities;
 
