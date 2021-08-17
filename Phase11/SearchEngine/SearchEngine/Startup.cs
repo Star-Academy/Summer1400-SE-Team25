@@ -24,8 +24,18 @@ namespace SearchEngine
             services.AddSingleton<IDbHandler, DbHandler>();
             services.AddSingleton(typeof(IDbHandler), typeof(DbHandler));
 
+            services.AddSingleton<DbHandler, DbHandler>();
+            services.AddSingleton(typeof(DbHandler), typeof(DbHandler));
+
             services.AddSingleton<ISearchEngine, Controllers.SearchEngine>();
             services.AddSingleton(typeof(ISearchEngine), typeof(Controllers.SearchEngine));
+
+            services.AddSingleton<Controllers.SearchEngine, Controllers.SearchEngine>();
+            services.AddSingleton(typeof(Controllers.SearchEngine), typeof(Controllers.SearchEngine));
+
+            services.AddControllers().AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
 
             services.AddControllers();
         }

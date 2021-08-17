@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using SearchEngine.Controller;
@@ -31,6 +32,7 @@ namespace SearchEngine.Controllers
         [Route("search/{searchQuery}")]
         public ActionResult<List<Document>> Search([FromRoute] string searchQuery)
         {
+            searchQuery = $"+{searchQuery}";
             var queryHandler = new QueryHandler(searchQuery);
             return queryHandler.OperateOnQuery(_dbHandler);
         }
