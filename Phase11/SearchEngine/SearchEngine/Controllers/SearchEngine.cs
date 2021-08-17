@@ -22,7 +22,7 @@ namespace SearchEngine.Controllers
 
         [HttpPost]
         [Route("add_dir")]
-        public IActionResult AddDirPath([FromBody] string directoryPath)
+        public IActionResult AddDirPath([FromQuery] string directoryPath)
         {
             _directoryHandler.ExtractDocuments(directoryPath);
             return Ok();
