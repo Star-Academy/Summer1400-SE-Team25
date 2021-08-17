@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SearchEngine.Controller;
+using SearchEngine.Controller.DataBase;
 
 namespace SearchEngine
 {
@@ -16,6 +18,15 @@ namespace SearchEngine
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<Context, Context>();
+            services.AddSingleton(typeof(Context), typeof(Context));
+
+            services.AddSingleton<IDbHandler, DbHandler>();
+            services.AddSingleton(typeof(IDbHandler), typeof(DbHandler));
+
+            services.AddSingleton<ISearchEngine, Controllers.SearchEngine>();
+            services.AddSingleton(typeof(ISearchEngine), typeof(Controllers.SearchEngine));
+
             services.AddControllers();
         }
 
