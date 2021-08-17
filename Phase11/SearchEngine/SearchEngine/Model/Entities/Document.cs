@@ -6,7 +6,6 @@ using System.Linq;
 
 namespace SearchEngine.Model.Entities
 {
-    [Serializable]
     public class Document
     {
         private const int DocumentPreviewCharacterCount = 27;
