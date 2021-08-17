@@ -1,22 +1,23 @@
 ﻿using System;
-using SearchEngine.Controller.DataBase;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace SearchEngine
 {
-    class Program
+    public class Program
     {
-        private const string EnglishDataPath = "EnglishData/";
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            var context = new Context();
-            context.Database.EnsureCreated();
-            var dbHandler = new DbHandler(context);
-            var searchEngine = new Controller.SearchEngine(dbHandler);
-            searchEngine.AddDirPath(EnglishDataPath);
-            foreach (var document in searchEngine.Search("+drug"))
-                Console.WriteLine(document);
-            Console.WriteLine("Press any key to exit...");
-            Console.ReadKey();
+            CreateHostBuilder(args).Build().Run();
         }
+
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
     }
 }
